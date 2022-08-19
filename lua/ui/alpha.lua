@@ -31,7 +31,7 @@ local function button(sc, txt, keybind, keybind_opts)
     width = 44,
     align_shortcut = 'right',
     { type = 'padding', val = 2 },
-    hl_shortcut = 'SpecialComment',
+    hl_shortcut = 'Function',
   }
 
   if keybind then
@@ -55,7 +55,7 @@ local section_header = {
   val = banner,
   opts = {
     position = 'center',
-    hl = 'Operator',
+    hl = 'Function',
   },
 }
 
@@ -96,15 +96,12 @@ end
 local default_mru_ignore = { 'gitcommit' }
 
 local mru_opts = {
-  ignore = function(path, ext)
-    return (string.find(path, 'COMMIT_EDITMSG')) or (vim.tbl_contains(default_mru_ignore, ext))
+  ignore = function(fpath, ext)
+    return (string.find(fpath, 'COMMIT_EDITMSG')) or (vim.tbl_contains(default_mru_ignore, ext))
   end,
 }
 
---- @param start number
---- @param cwd string optional
---- @param items_number number optional number of items to generate, default = 10
-local function mru(start, cwd, items_number, opts)
+local function mru(cwd, items_number, opts)
   opts = opts or mru_opts
   items_number = items_number or 9
 
@@ -160,7 +157,7 @@ local section_mru = {
       type = 'text',
       val = 'Recent files',
       opts = {
-        hl = 'Float',
+        hl = 'Operator',
         shrink_margin = false,
         position = 'center',
       },
@@ -169,7 +166,7 @@ local section_mru = {
     {
       type = 'group',
       val = function()
-        return { mru(1, cdir, 4) }
+        return { mru(cdir, 4) }
       end,
       opts = {
         shrink_margin = false,
@@ -181,7 +178,7 @@ local section_mru = {
 local section_buttons = {
   type = 'group',
   val = {
-    { type = 'text', val = 'Quick actions', opts = { hl = 'Float', position = 'center' } },
+    { type = 'text', val = 'Quick actions', opts = { hl = 'Operator', position = 'center' } },
     { type = 'padding', val = 1 },
     button('LDR fs', '缾 sessions'),
     button('LDR fr', '  recent files'),

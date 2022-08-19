@@ -2,22 +2,19 @@ vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 
 -- theme style
-vim.g.tokyonight_style = 'night'
+vim.g.material_style = 'deep ocean'
 
--- theme customcolors
-vim.g.tokyonight_colors = {
-  green = '#0487d8',
-  green1 = '#cad4ed',
-  orange = '#b4bdff',
-  yellow = '#98c9ed',
-  warning = '#dafd89',
-  blue = '#91aacd',
-  blue1 = '#4870c1',
-  magenta = '#396a92 ',
-  purple = '#8d82e8',
-  -- bg = '#1b202a',
-  bg_dark = '#232833',
-  comment = '#4b525f',
-}
+-- -- theme setup
+require('material').setup({
+  contrast = {
+    sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+    floating_windows = false, -- Enable contrast for floating windows
+    line_numbers = false, -- Enable contrast background for line numbers
+    sign_column = true, -- Enable contrast background for the sign column
+    cursor_line = false, -- Enable darker background for the cursor line
+    non_current_windows = true, -- Enable darker background for non-current windows
+    popup_menu = false, -- Enable lighter background for the popup menu
+  },
+})
 
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme material]])
