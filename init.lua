@@ -1,7 +1,6 @@
 -- base
 require('core.options')
 require('core.keybindings')
-require('core.optimizations')
 
 -- plugins config
 require('plugins')
