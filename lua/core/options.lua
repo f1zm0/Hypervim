@@ -9,6 +9,7 @@ opt.hlsearch = true -- highlight search
 opt.ruler = false
 opt.number = true
 opt.relativenumber = true
+opt.showmatch = true
 
 -- Buffers
 opt.hidden = true
@@ -16,6 +17,8 @@ opt.hidden = true
 -- Indentation
 opt.expandtab = true
 opt.smartindent = true
+opt.shiftwidth = 4
+opt.tabstop = 4
 
 -- Swapfiles
 g.noswapfile = true
@@ -33,7 +36,36 @@ opt.pumblend = 25
 vim.diagnostic.config({
   virtual_text = false, -- disable inline diagnostics
 })
-
--- show diagnostics on hover in a floating window
 vim.o.updatetime = 300
-vim.cmd('autocmd CursorHold * lua vim.diagnostic.open_float({scope="line"})')
+
+-- disable builtin plugins
+local disabled_built_ins = {
+  '2html_plugin',
+  'bugreport',
+  'compiler',
+  'getscript',
+  'getscriptPlugin',
+  'gzip',
+  'logipat',
+  'matchit',
+  'netrw',
+  'netrwFileHandlers',
+  'netrwPlugin',
+  'netrwSettings',
+  'optwin',
+  'rplugin',
+  'rrhelper',
+  'spellfile_plugin',
+  'synmenu',
+  'tar',
+  'tarPlugin',
+  'tutor',
+  'vimball',
+  'vimballPlugin',
+  'zip',
+  'zipPlugin',
+}
+
+for _, p in pairs(disabled_built_ins) do
+  g['loaded_' .. p] = 1
+end
