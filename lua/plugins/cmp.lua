@@ -16,6 +16,34 @@ if not kind_status_ok then
   return
 end
 
+local lspkind_icons = {
+  Text = '',
+  Method = ' ',
+  Function = '',
+  Constructor = ' ',
+  Field = ' ',
+  Variable = ' ',
+  Class = ' ',
+  Interface = '',
+  Module = '硫',
+  Property = '',
+  Unit = ' ',
+  Value = '',
+  Enum = ' ',
+  Keyword = ' ',
+  Snippet = ' ',
+  Color = ' ',
+  File = ' ',
+  Reference = 'Ꮢ',
+  Folder = ' ',
+  EnumMember = ' ',
+  Constant = ' ',
+  Struct = ' ',
+  Event = '',
+  Operator = '',
+  TypeParameter = ' ',
+}
+
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
@@ -28,16 +56,16 @@ cmp.setup({
     completion = {
       border = 'rounded',
       winhighlight = 'Normal:Pmenu,FloatBorder:Comment',
-      max_width = 50,
-      min_width = 50,
+      max_width = 60,
+      min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
       min_height = 3,
     },
     documentation = {
       border = 'rounded',
       winhighlight = 'Normal:Pmenu,FloatBorder:Comment',
-      max_width = 50,
-      min_width = 50,
+      max_width = 60,
+      min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
       min_height = 3,
     },
@@ -57,22 +85,21 @@ cmp.setup({
     },
   }),
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol',
-      maxwidth = 50,
-      before = function(entry, vim_item)
-        vim_item.menu = ({
-          nvim_lsp = 'ﲳ',
-          nvim_lua = '',
-          treesitter = '',
-          path = 'ﱮ',
-          buffer = '﬘',
-          luasnip = '',
-        })[entry.source.name]
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      local meta_type = vim_item.kind
+      -- load lspkind icons
+      vim_item.kind = lspkind_icons[vim_item.kind] .. ''
 
-        return vim_item
-      end,
-    }),
+      vim_item.menu = ({
+        buffer = 'Buffer',
+        nvim_lsp = meta_type,
+        path = 'Path',
+        luasnip = 'LuaSnip',
+      })[entry.source.name]
+
+      return vim_item
+    end,
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
