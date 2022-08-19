@@ -14,7 +14,7 @@ indent_blankline.setup({
     'alpha',
     'help',
     'lspinfo',
-    'Neotree',
+    'NvimTree',
     'packer',
     'TelescopePrompt',
     'TelescopeResults',
