@@ -50,3 +50,8 @@ local sessionlens_status_ok, _ = pcall(require, 'session-lens')
 if sessionlens_status_ok then
   keymap('n', '<leader>fs', '<cmd>SearchSession<cr>', opts)
 end
+
+local windows_status_ok, _ = pcall(require, 'windows')
+if windows_status_ok then
+  keymap('n', '<leader>z', '<cmd>WindowsMaximize<cr>', opts)
+end

@@ -1,6 +1,5 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-
 -- leader key
 vim.g.mapleader = ','
 
@@ -35,10 +34,6 @@ keymap('v', '>', '>gv', opts)
 -- faster splits
 keymap('n', '\\', '<cmd>split<cr>', opts)
 keymap('n', '|', '<cmd>vsplit<cr>', opts)
-
--- maximize split
-keymap('n', '+', '<cmd>tabnew %<cr>', opts)
-keymap('n', '=', '<cmd>tabclose<cr>', opts)
 
 -- open config entrypoint file
 keymap('n', '<leader>rc', '<cmd>e ' .. os.getenv('MYVIMRC') .. '<cr>', opts)

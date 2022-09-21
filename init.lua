@@ -28,6 +28,7 @@ require('lsp.fidget')
 -- UI and styling
 require('ui.colors')
 require('ui.bufferline')
-require('ui.galaxyline')
+require('ui.statusline')
 require('ui.alpha')
 require('ui.colorizer')
+require('ui.windows')

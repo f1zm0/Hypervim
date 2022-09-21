@@ -43,9 +43,16 @@ return require('packer').startup(function(use)
 
   -- UI
   use({ 'akinsho/bufferline.nvim', tag = 'v2.*' })
-  use({ 'glepnir/galaxyline.nvim', branch = 'main' })
+  use({ 'nvim-lualine/lualine.nvim' })
+  use('lukas-reineke/indent-blankline.nvim')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
+  use({ 'catppuccin/nvim', as = 'catppuccin' })
+  use('folke/tokyonight.nvim')
+  use('marko-cerovac/material.nvim')
+  use({ 'anuvyklack/windows.nvim', requires = {
+    'anuvyklack/middleclass',
+  } })
 
   -- Sessions
   use('rmagatti/auto-session')
@@ -58,18 +65,9 @@ return require('packer').startup(function(use)
   -- Git status
   use({ 'lewis6991/gitsigns.nvim', tag = 'release' })
 
-  -- Indentation guides
-  use('lukas-reineke/indent-blankline.nvim')
-
   -- Comments
   use('terrortylor/nvim-comment')
   use('folke/todo-comments.nvim')
-
-  -- Colorschemes
-  use('folke/tokyonight.nvim')
-  use('marko-cerovac/material.nvim')
-  use('navarasu/onedark.nvim')
-  use('yuttie/hydrangea-vim')
 
   -- Markdown support
   use({
@@ -78,4 +76,5 @@ return require('packer').startup(function(use)
       vim.fn['mkdp#util#install']()
     end,
   })
+  use('mzlogin/vim-markdown-toc')
 end)
