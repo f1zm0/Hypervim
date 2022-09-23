@@ -21,7 +21,7 @@
 
 ![usage example](static/example01.png)
 
-## Core features
+## Main features
 
 - [lspconfig](https://github.com/neovim/nvim-lspconfig) to easily config the native LSP client
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) as fuzzy finder for files and buffers
@@ -29,7 +29,7 @@
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for enhanced syntax highlighting
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) for autocompletion
 - [LuaSnips](https://github.com/L3MON4D3/LuaSnip) for snippets
-- [galaxyline](https://github.com/glepnir/galaxyline.nvim) as statusline
+- [lualine](https://github.com/nvim-lualine/lualine.nvim) as statusline
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) for git integration
 - [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) as file browser with diagnostic and git support
 - [formatter](https://github.com/mhartington/formatter.nvim) for code formatting
