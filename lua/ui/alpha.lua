@@ -55,7 +55,7 @@ local section_header = {
   val = banner,
   opts = {
     position = 'center',
-    hl = 'Function',
+    hl = 'Variable',
   },
 }
 

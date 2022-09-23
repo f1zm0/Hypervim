@@ -27,10 +27,9 @@ tokyonight.setup({
     colors.blue = '#72a4fd'
     colors.purple = '#c58efb'
     colors.fg = '#cadafe'
-    -- colors.bg = '#1a2129'
     -- colors.bg_float = '#202933'
-    colors.bg_sidebar = '#242435'
-    colors.border_highlight = '#2b2f43'
+    -- colors.bg_sidebar = '#242435'
+    -- colors.border_highlight = '#2b2f43'
   end,
 
   on_highlights = function(highlights, c)
