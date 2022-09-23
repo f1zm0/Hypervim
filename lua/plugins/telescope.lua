@@ -11,6 +11,7 @@ telescope.setup({
       'build',
       '__pycache__',
       'vendor',
+      'node_modules',
     },
   },
 })
