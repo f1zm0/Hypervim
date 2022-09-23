@@ -14,6 +14,9 @@ opt.showmatch = true
 -- Buffers
 opt.hidden = true
 
+-- File navigation
+opt.cursorline = true
+
 -- Indentation
 opt.expandtab = true
 opt.smartindent = true
