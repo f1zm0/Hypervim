@@ -37,6 +37,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = sumneko_lua_settings,
+  tsserver = {},
   yamlls = {},
 }
 
