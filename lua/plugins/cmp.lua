@@ -11,7 +11,7 @@ if not snip_status_ok then
 end
 
 -- lspkind plugin guard
-local kind_status_ok, lspkind = pcall(require, 'lspkind')
+local kind_status_ok, _ = pcall(require, 'lspkind')
 if not kind_status_ok then
   return
 end
@@ -55,7 +55,6 @@ cmp.setup({
   window = {
     completion = {
       border = 'rounded',
-      winhighlight = 'Normal:Pmenu,FloatBorder:Comment',
       max_width = 60,
       min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
@@ -63,7 +62,6 @@ cmp.setup({
     },
     documentation = {
       border = 'rounded',
-      winhighlight = 'Normal:Pmenu,FloatBorder:Comment',
       max_width = 60,
       min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
