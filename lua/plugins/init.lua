@@ -47,9 +47,7 @@ return require('packer').startup(function(use)
   use('lukas-reineke/indent-blankline.nvim')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
-  use({ 'catppuccin/nvim', as = 'catppuccin' })
   use('folke/tokyonight.nvim')
-  use('marko-cerovac/material.nvim')
   use({ 'anuvyklack/windows.nvim', requires = {
     'anuvyklack/middleclass',
   } })
@@ -59,11 +57,12 @@ return require('packer').startup(function(use)
   use('rmagatti/session-lens')
 
   -- File explorer
-  -- use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" }
   use('kyazdani42/nvim-tree.lua')
 
-  -- Git status
+  -- Git integration
   use({ 'lewis6991/gitsigns.nvim', tag = 'release' })
+  use({ 'TimUntersberger/neogit' })
+  use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
   -- Comments
   use('terrortylor/nvim-comment')
