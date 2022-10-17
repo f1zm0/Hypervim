@@ -23,6 +23,15 @@ lens.setup({
   path_display = { 'shorten' },
 })
 
+-- close NvimTree buffer when exiting, open it at startup
+vim.api.nvim_exec(
+  [[ 
+let g:auto_session_pre_save_cmds = ["NvimTreeClose"]
+let g:auto_session_post_restore_cmds = ["NvimTreeOpen"]
+]],
+  true
+)
+
 -- save current session on exit
 vim.api.nvim_exec(
   [[
