@@ -30,6 +30,7 @@ local sumneko_lua_settings = {
 local servers = {
   bashls = {},
   clangd = {},
+  cssls = {},
   eslint = {},
   golangci_lint_ls = {},
   gopls = {},
