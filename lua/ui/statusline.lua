@@ -19,7 +19,7 @@ local conditions = {
 
 -- use custom colors
 local colors = {
-  bg = '#242435',
+  bg = '#141424',
   bg_alt = '#545c7e',
   fg = '#a9b1d6',
   yellow = '#e0af68',
