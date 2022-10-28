@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
   use({ 'anuvyklack/windows.nvim', requires = {
     'anuvyklack/middleclass',
   } })
+  use('petertriho/nvim-scrollbar')
 
   -- Sessions
   use('rmagatti/auto-session')
