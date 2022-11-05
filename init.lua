@@ -17,8 +17,8 @@ require('plugins.todo')
 require('plugins.keybindings')
 
 -- LSP
+require('lsp.mason')
 require('lsp.config')
-require('lsp.installer')
 require('lsp.servers')
 require('lsp.signature')
 require('lsp.formatter')
