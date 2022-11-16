@@ -21,8 +21,11 @@ return require('packer').startup(function(use)
   use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
 
   -- LSP
-  use('williamboman/nvim-lsp-installer')
-  use('neovim/nvim-lspconfig')
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
   use('ray-x/lsp_signature.nvim')
   use('onsails/lspkind.nvim')
   use('mhartington/formatter.nvim')
