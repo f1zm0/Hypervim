@@ -1,5 +1,5 @@
-local status_ok, mason = pcall(require, 'mason')
-if not status_ok then
+local mason_ok, mason = pcall(require, 'mason')
+if not mason_ok then
   return
 end
 
@@ -8,7 +8,7 @@ if not mlspc_ok then
   return
 end
 
-local ensure_installed = {
+local lsp_servers = {
   'bashls',
   'clangd',
   'cssls',
@@ -35,6 +35,6 @@ mason.setup({
 })
 
 mason_lspconfig.setup({
-  ensure_installed = ensure_installed,
+  ensure_installed = lsp_servers,
   automatic_installation = true,
 })
