@@ -5,6 +5,12 @@ end
 
 formatter.setup({
   filetype = {
+    c = {
+      require('formatter.filetypes.c').clangformat,
+    },
+    cpp = {
+      require('formatter.filetypes.c').clangformat,
+    },
     go = {
       require('formatter.filetypes.go').gofumpt,
       require('formatter.filetypes.go').goimports,
