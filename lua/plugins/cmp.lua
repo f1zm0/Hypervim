@@ -46,7 +46,7 @@ local lspkind_icons = {
 }
 
 -- custom highlights
-vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#AAC644' })
+-- vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#5419cf' })
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
