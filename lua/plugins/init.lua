@@ -21,11 +21,11 @@ return require('packer').startup(function(use)
   use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
 
   -- LSP
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
+  use({
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+  })
   use('ray-x/lsp_signature.nvim')
   use('onsails/lspkind.nvim')
   use('mhartington/formatter.nvim')
@@ -80,4 +80,22 @@ return require('packer').startup(function(use)
     end,
   })
   use('mzlogin/vim-markdown-toc')
+
+  -- Copilot integration
+  use({
+    'zbirenbaum/copilot.lua',
+    event = { 'VimEnter' },
+    config = function()
+      vim.defer_fn(function()
+        require('plugins.copilot')
+      end, 100)
+    end,
+  })
+  use({
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+  })
 end)

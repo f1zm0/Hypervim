@@ -42,7 +42,11 @@ local lspkind_icons = {
   Event = '',
   Operator = '',
   TypeParameter = ' ',
+  Copilot = ' ',
 }
+
+-- custom highlights
+vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#AAC644' })
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -69,10 +73,11 @@ cmp.setup({
     },
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'treesitter' },
-    { name = 'luasnip' },
-    { name = 'path' },
+    { name = 'copilot', group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 },
+    { name = 'treesitter', group_index = 2 },
+    { name = 'path', group_index = 2 },
+    { name = 'luasnip', group_index = 2 },
     {
       name = 'buffer',
       option = {
@@ -106,8 +111,15 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
+    }),
     ['Right'] = cmp.mapping.confirm({ select = true }),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
   }),
+  experimental = {
+    ghost_text = {
+      hl_group = 'Comment',
+    },
+  },
 })
