@@ -39,6 +39,7 @@ packer.startup(function(use)
   use('kyazdani42/nvim-web-devicons')
   use('MunifTanjim/nui.nvim')
   use('windwp/nvim-autopairs')
+  use('rcarriga/nvim-notify')
 
   -- Syntax highligther
   use({

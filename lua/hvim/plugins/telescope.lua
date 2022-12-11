@@ -15,3 +15,6 @@ telescope.setup({
     },
   },
 })
+
+-- extensions
+telescope.load_extension('notify')
