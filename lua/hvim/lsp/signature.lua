@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local hints_icons = require('hvim.ui.icons').hints
+
 local cfg = {
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath('cache') .. '/lsp_signature.log', -- log dir when debug is on
@@ -19,7 +21,7 @@ local cfg = {
   close_timeout = 4000,
   fix_pos = false,
   hint_enable = true,
-  hint_prefix = '🐙 ',
+  hint_prefix = hints_icons.prefix,
   hint_scheme = 'String',
   hi_parameter = 'LspSignatureActiveParameter',
   handler_opts = {

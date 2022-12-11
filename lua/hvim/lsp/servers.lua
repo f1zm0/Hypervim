@@ -37,7 +37,6 @@ local servers = {
   golangci_lint_ls = {},
   gopls = {},
   jsonls = {},
-  ltex = {},
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = sumneko_lua_settings,

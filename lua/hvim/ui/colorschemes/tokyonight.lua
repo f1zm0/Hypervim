@@ -1,9 +1,4 @@
-local status_ok, tokyonight = pcall(require, 'tokyonight')
-if not status_ok then
-  return
-end
-
-tokyonight.setup({
+return {
   style = 'moon',
   transparent = false,
   terminal_colors = true,
@@ -27,14 +22,9 @@ tokyonight.setup({
     colors.blue = '#72a4fd'
     colors.purple = '#c58efb'
     colors.fg = '#cadafe'
-    -- colors.bg_float = '#202933'
-    -- colors.bg_sidebar = '#242435'
-    -- colors.border_highlight = '#2b2f43'
   end,
 
   on_highlights = function(highlights, c)
     highlights.NvimTreeFolderIcon = { bg = c.none, fg = c.orange }
   end,
-})
-
-vim.cmd([[colorscheme tokyonight]])
+}

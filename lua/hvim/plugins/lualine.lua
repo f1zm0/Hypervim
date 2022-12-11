@@ -17,6 +17,19 @@ local conditions = {
   end,
 }
 
+local winbar_cfg = {
+  lualine_c = {},
+}
+local inactive_winbar_cfg = {}
+local inactive_sections_cfg = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = { 'filename' },
+  lualine_x = { 'location' },
+  lualine_y = {},
+  lualine_z = {},
+}
+
 -- use custom colors
 local colors = {
   bg = '#141424',
@@ -63,19 +76,13 @@ local config = {
     lualine_b = {},
     lualine_y = {},
     lualine_z = {},
-    -- These will be filled later
+    -- these will be filled later
     lualine_c = {},
     lualine_x = {},
   },
-  inactive_sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
+  inactive_sections = inactive_sections_cfg,
+  winbar = winbar_cfg,
+  inactive_winbar = inactive_winbar_cfg,
 }
 
 -- Inserts a component in lualine_c at left section
@@ -163,7 +170,11 @@ ins_left({
   },
 })
 
-ins_left({ 'location' })
+ins_left({
+  'aerial',
+  depth = 3,
+  padding = { right = 2, left = 2 },
+})
 
 ins_left({
   'diagnostics',
@@ -176,7 +187,7 @@ ins_left({
   },
 })
 
-ins_left({
+ins_right({
   function()
     return ' '
   end,
@@ -185,37 +196,47 @@ ins_left({
     fg = colors.red,
     gui = 'bold',
   },
-  padding = { right = 0, left = 2 },
+  padding = { right = 0, left = 0 },
 })
 
-ins_left({
+ins_right({
   'branch',
   icon = 'branch:',
   color = {
     fg = colors.fg,
   },
-  padding = { left = 0 },
+  padding = { right = 1 },
 })
 
-ins_right({
-  function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' ',
-  color = { fg = colors.cyan },
-})
+-- ins_right({
+--   function()
+--     return ' '
+--   end,
+--   color = {
+--     fg = colors.cyan,
+--     gui = 'bold',
+--   },
+--   padding = { right = 0, left = 1 },
+-- })
+
+-- ins_right({
+--   function()
+--     local msg = 'No Active Lsp'
+--     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+--     local clients = vim.lsp.get_active_clients()
+--     if next(clients) == nil then
+--       return msg
+--     end
+--     for _, client in ipairs(clients) do
+--       local filetypes = client.config.filetypes
+--       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--         return client.name
+--       end
+--     end
+--     return msg
+--   end,
+--   color = { fg = colors.fg },
+-- })
 
 -- Add components to right sections
 ins_right({
@@ -242,6 +263,13 @@ ins_right({
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
+})
+
+ins_right({
+  'location',
+  color = {
+    fg = colors.bg_alt,
+  },
 })
 
 ins_right({

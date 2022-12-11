@@ -1,4 +1,37 @@
-return require('packer').startup(function(use)
+-- automatically install packer if not installed
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system({
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path,
+  })
+  print('Installing packer...')
+  vim.cmd([[packadd packer.nvim]])
+end
+
+-- call to packer with guard to avoid errors at first start
+local status_ok, packer = pcall(require, 'packer')
+if not status_ok then
+  return
+end
+
+local opts = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'rounded' })
+    end,
+  },
+}
+
+packer.init(opts)
+
+packer.startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- Utils
@@ -28,14 +61,17 @@ return require('packer').startup(function(use)
   })
   use('ray-x/lsp_signature.nvim')
   use('onsails/lspkind.nvim')
-  use('mhartington/formatter.nvim')
   use('folke/trouble.nvim')
   use('j-hui/fidget.nvim')
+
+  -- Formatting
+  use('jose-elias-alvarez/null-ls.nvim')
 
   -- Autocompletion
   use('hrsh7th/cmp-nvim-lsp')
   use('hrsh7th/cmp-buffer')
   use('hrsh7th/cmp-path')
+  use('hrsh7th/cmp-emoji')
   use('hrsh7th/cmp-cmdline')
   use('hrsh7th/nvim-cmp')
 
@@ -55,6 +91,7 @@ return require('packer').startup(function(use)
     'anuvyklack/middleclass',
   } })
   use('petertriho/nvim-scrollbar')
+  use('stevearc/aerial.nvim')
 
   -- Sessions
   use('rmagatti/auto-session')
@@ -76,7 +113,7 @@ return require('packer').startup(function(use)
   use({
     'iamcco/markdown-preview.nvim',
     run = function()
-      vim.fn['mkdp#util#install']()
+      fn['mkdp#util#install']()
     end,
   })
   use('mzlogin/vim-markdown-toc')
@@ -84,10 +121,11 @@ return require('packer').startup(function(use)
   -- Copilot integration
   use({
     'zbirenbaum/copilot.lua',
-    event = { 'VimEnter' },
+    event = 'InsertEnter',
     config = function()
       vim.defer_fn(function()
-        require('plugins.copilot')
+        local opts = require('hvim.plugins.copilot').options
+        require('copilot').setup(opts)
       end, 100)
     end,
   })
@@ -98,4 +136,8 @@ return require('packer').startup(function(use)
       require('copilot_cmp').setup()
     end,
   })
+
+  if PACKER_BOOTSTRAP then
+    packer.sync()
+  end
 end)

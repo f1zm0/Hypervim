@@ -4,16 +4,9 @@ if not status_ok then
   return
 end
 
--- diagnostic symbols
-local signs = {
-  Error = '',
-  Warn = ' ',
-  Hint = ' ',
-  Info = ' ',
-  Other = '',
-}
+local signs_icons = require('hvim.ui.icons').diagnostics
 
-for type, icon in pairs(signs) do
+for type, icon in pairs(signs_icons) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, {
     text = icon,

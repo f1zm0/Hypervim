@@ -1,9 +1,7 @@
-local status_ok, copilot = pcall(require, 'copilot')
-if not status_ok then
-  return
-end
+local M = {}
 
-copilot.setup({
+-- setup function
+M.options = {
   panel = {
     enabled = true,
     auto_refresh = false,
@@ -39,4 +37,6 @@ copilot.setup({
   },
   copilot_node_command = 'node', -- Node version must be < 18
   server_opts_overrides = {},
-})
+}
+
+return M

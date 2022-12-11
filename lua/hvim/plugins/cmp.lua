@@ -16,34 +16,8 @@ if not kind_status_ok then
   return
 end
 
-local lspkind_icons = {
-  Text = '',
-  Method = ' ',
-  Function = '',
-  Constructor = ' ',
-  Field = ' ',
-  Variable = ' ',
-  Class = ' ',
-  Interface = '',
-  Module = '硫',
-  Property = '',
-  Unit = ' ',
-  Value = '',
-  Enum = ' ',
-  Keyword = ' ',
-  Snippet = ' ',
-  Color = ' ',
-  File = ' ',
-  Reference = 'Ꮢ',
-  Folder = ' ',
-  EnumMember = ' ',
-  Constant = ' ',
-  Struct = ' ',
-  Event = '',
-  Operator = '',
-  TypeParameter = ' ',
-  Copilot = ' ',
-}
+-- kind icons
+local kind_icons = require('hvim.ui.icons').completion
 
 -- custom highlights
 -- vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#5419cf' })
@@ -73,11 +47,12 @@ cmp.setup({
     },
   },
   sources = cmp.config.sources({
-    { name = 'copilot', group_index = 2 },
+    { name = 'copilot', group_index = 1 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'treesitter', group_index = 2 },
     { name = 'path', group_index = 2 },
-    { name = 'luasnip', group_index = 2 },
+    { name = 'emoji', group_index = 3 },
+    { name = 'luasnip', group_index = 4 },
     {
       name = 'buffer',
       option = {
@@ -92,7 +67,7 @@ cmp.setup({
     format = function(entry, vim_item)
       local meta_type = vim_item.kind
       -- load lspkind icons
-      vim_item.kind = lspkind_icons[vim_item.kind] .. ''
+      vim_item.kind = kind_icons[vim_item.kind] .. ''
 
       vim_item.menu = ({
         buffer = 'Buffer',
