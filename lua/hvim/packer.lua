@@ -53,6 +53,7 @@ packer.startup(function(use)
 
   -- Telescope
   use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   -- LSP
   use({
