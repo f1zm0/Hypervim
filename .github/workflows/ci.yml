@@ -1,7 +1,7 @@
 ---
 name: ci
 
-'on':
+"on":
   push:
     branches:
       - main
@@ -20,4 +20,4 @@ jobs:
         uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --check .
+          args: --check -v ./lua/hvim/
