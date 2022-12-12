@@ -8,6 +8,7 @@ if telescope_status_ok then
   keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
   keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
   keymap('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', opts)
+  keymap('n', '<leader>fn', '<cmd>Telescope notify<cr>', opts)
 end
 
 local bufline_status_ok, _ = pcall(require, 'bufferline')
