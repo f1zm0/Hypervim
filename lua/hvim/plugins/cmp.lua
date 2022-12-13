@@ -20,7 +20,7 @@ end
 local kind_icons = require('hvim.ui.icons').completion
 
 -- custom highlights
--- vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#5419cf' })
+vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { bg = '#dddddd', fg = '#222222' })
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -67,7 +67,7 @@ cmp.setup({
     format = function(entry, vim_item)
       local meta_type = vim_item.kind
       -- load lspkind icons
-      vim_item.kind = kind_icons[vim_item.kind] .. ''
+      vim_item.kind = kind_icons[vim_item.kind]
 
       vim_item.menu = ({
         buffer = 'Buffer',
