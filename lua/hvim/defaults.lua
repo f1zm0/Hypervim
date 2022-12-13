@@ -50,7 +50,10 @@ M.copilot = {
 }
 
 M.ui = {
-  colorscheme = 'tokyonight',
+  colorscheme = {
+    name = 'oxocarbon',
+    style = '',
+  },
 }
 
 return M
