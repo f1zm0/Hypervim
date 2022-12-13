@@ -88,12 +88,16 @@ packer.startup(function(use)
   use('lukas-reineke/indent-blankline.nvim')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
-  use('folke/tokyonight.nvim')
   use({ 'anuvyklack/windows.nvim', requires = {
     'anuvyklack/middleclass',
   } })
   use('petertriho/nvim-scrollbar')
   use('stevearc/aerial.nvim')
+
+  -- Colorschemes
+  use('folke/tokyonight.nvim')
+  use({ 'nyoom-engineering/oxocarbon.nvim' })
+  use({ 'catppuccin/nvim', as = 'catppuccin' })
 
   -- Sessions
   use('rmagatti/auto-session')
