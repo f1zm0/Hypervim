@@ -40,6 +40,7 @@ packer.startup(function(use)
   use('MunifTanjim/nui.nvim')
   use('windwp/nvim-autopairs')
   use('rcarriga/nvim-notify')
+  use('lewis6991/impatient.nvim')
 
   -- Syntax highligther
   use({

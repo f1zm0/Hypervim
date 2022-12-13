@@ -1,6 +1,8 @@
 -- compatibility check
 require('hvim.util.version').check_nvim_version()
 
+require('impatient')
+
 require('hvim.core.options')
 require('hvim.core.keybindings')
 require('hvim.packer')
