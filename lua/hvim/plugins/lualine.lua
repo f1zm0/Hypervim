@@ -24,25 +24,27 @@ local inactive_winbar_cfg = {}
 local inactive_sections_cfg = {
   lualine_a = {},
   lualine_b = {},
-  lualine_c = { 'filename' },
-  lualine_x = { 'location' },
+  lualine_c = {},
+  lualine_x = {},
   lualine_y = {},
   lualine_z = {},
 }
 
--- use custom colors
+-- use custom colors as the default theme (oxocarbon.nvim)
+-- doesn't expose the color palette yet
+-- ref: https://github.com/nyoom-engineering/oxocarbon.nvim/issues/10
 local colors = {
-  bg = '#141424',
-  bg_alt = '#545c7e',
-  fg = '#a9b1d6',
+  bg = '#222222',
+  bg_alt = '#343434',
+  fg = '#dedede',
+  fg_alt = '#545454',
   yellow = '#e0af68',
   cyan = '#7dcfff',
-  darkblue = '#1b6a73',
+  blue = '#1b6a73',
   green = '#8bcd5b',
   orange = '#dd9046',
   purple = '#c75ae8',
   magenta = '#bb9af7',
-  blue = '#7aa2f7',
   red = '#f65866',
 }
 
@@ -50,24 +52,16 @@ local config = {
   options = {
     -- Disable sections and component separators
     disabled_filetypes = {
-      statusline = {
-        'alpha',
-        'NvimTree',
-        'packer',
-        'Trouble',
-      },
-      winbar = {
-        'alpha',
-        'nvim-tree',
-        'packer',
-        'Trouble',
-      },
+      'alpha',
+      'NvimTree',
+      'packer',
+      'Trouble',
     },
     component_separators = '',
     section_separators = '',
     theme = {
       normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      inactive = { c = { fg = colors.fg_alt, bg = colors.bg } },
     },
   },
   sections = {
@@ -105,43 +99,36 @@ local function inactive_ins_right(component)
   table.insert(config.inactive_sections.lualine_x, component)
 end
 
+--
+-- Inactive modules
+--
 inactive_ins_left({
   'filename',
   cond = conditions.buffer_not_empty,
-  color = {
-    fg = colors.bg_alt,
-  },
 })
 
 inactive_ins_right({
   'location',
-  color = {
-    fg = colors.bg_alt,
-  },
 })
 
-ins_left({
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-})
+--
+-- Active modules
+--
 
 ins_left({
   -- mode component
   function()
-    return ' '
+    return ' '
   end,
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
-      n = colors.blue,
-      i = colors.green,
+      n = colors.fg,
+      i = colors.cyan,
       v = colors.red,
-      [''] = colors.blue,
-      V = colors.blue,
-      c = colors.magenta,
+      [''] = colors.purple,
+      V = colors.purple,
+      c = colors.green,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
@@ -159,15 +146,12 @@ ins_left({
     }
     return { fg = mode_color[vim.fn.mode()] }
   end,
-  padding = { right = 1 },
+  padding = { left = 1, right = 1 },
 })
 
 ins_left({
   'filename',
   cond = conditions.buffer_not_empty,
-  color = {
-    fg = '#ffffff',
-  },
 })
 
 ins_left({
@@ -180,11 +164,11 @@ ins_left({
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
-  diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
-  },
+  -- diagnostics_color = {
+  --   color_error = { fg = colors.red },
+  --   color_warn = { fg = colors.yellow },
+  --   color_info = { fg = colors.cyan },
+  -- },
 })
 
 ins_right({
@@ -202,9 +186,6 @@ ins_right({
 ins_right({
   'branch',
   icon = 'branch:',
-  color = {
-    fg = colors.fg,
-  },
   padding = { right = 1 },
 })
 
@@ -243,41 +224,26 @@ ins_right({
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.fg },
 })
 
 ins_right({
   'fileformat',
   fmt = string.upper,
   icons_enabled = false,
-  color = { fg = colors.fg },
 })
 
 ins_right({
   'diff',
-  -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '柳 ', removed = ' ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
   cond = conditions.hide_in_width,
 })
 
 ins_right({
   'location',
   color = {
-    fg = colors.bg_alt,
+    fg = colors.fg_alt,
   },
-})
-
-ins_right({
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue },
-  padding = { left = 1 },
+  padding = { right = 1 },
 })
 
 -- Now don't forget to initialize lualine
