@@ -15,7 +15,7 @@ scrollbar.setup({
     'NvimTree',
   },
   handle = {
-    color = colors.bg_highlight,
+    color = '#454545',
   },
   marks = {
     Search = { color = colors.orange },
