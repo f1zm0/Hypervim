@@ -94,7 +94,7 @@ Below are some of the most important keymaps, for a full list see [keymaps.lua](
 | Navigate to top window    | `Ctrl+k`    |
 | Navigate to bottom window | `Ctrl+j`    |
 | Horizontal split          | `\`         |
-| Horizontal split          | `           |
+| Vertical split            | `\|`        |
 | Next buffer               | `Tab`       |
 | Previous buffer           | `Shift+Tab` |
 
