@@ -1,5 +1,5 @@
 return {
-  style = 'moon',
+  style = 'night',
   transparent = false,
   terminal_colors = true,
   styles = {
