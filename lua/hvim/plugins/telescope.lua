@@ -34,8 +34,8 @@ telescope.setup({
       vertical = {
         mirror = false,
       },
-      width = 0.87,
-      height = 0.8,
+      -- width = 0.85,
+      -- height = 0.8,
       preview_cutoff = 120,
     },
   },
