@@ -102,7 +102,10 @@ packer.startup(function(use)
 
   -- Sessions
   use('rmagatti/auto-session')
-  use('rmagatti/session-lens')
+  use({
+    'rmagatti/session-lens',
+    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+  })
 
   -- File explorer
   use('kyazdani42/nvim-tree.lua')
