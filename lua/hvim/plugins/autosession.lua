@@ -20,7 +20,16 @@ local opts = {
 sessions.setup(opts)
 
 lens.setup({
-  path_display = { 'shorten' },
+  theme = 'dropdown',
+  theme_conf = {
+    layout_config = {
+      width = 0.85,
+      height = 0.2,
+    },
+    borderchars = require('telescope.config').values.borderchars,
+    layout_strategy = 'flex',
+  },
+  previewer = false,
 })
 
 -- close NvimTree buffer when exiting, open it at startup
