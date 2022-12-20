@@ -10,7 +10,3 @@ vim.g.mkdp_port = defaults.port
 vim.g.mkdp_page_title = '${name} - [MDPreview]'
 vim.g.mkdp_echo_preview_url = 1
 vim.g.mkdp_refresh_slow = 1
-
--- Visual fix for statusline bottom left part
--- that remains white for both active and inactive windows
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#333333', fg = '#000000' })
