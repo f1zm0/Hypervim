@@ -11,8 +11,8 @@ require('hvim.ui')
 require('hvim.lsp')
 require('hvim.plugins')
 
--- Post init checks
-if require('hvim.defaults').preferences.check_hvim_updates then
+-- Startup tasks
+if require('hvim.defaults').startup_tasks.check_hvim_updates then
   local latest_hvim_version = require('hvim.util.version').get_latest_hvim_version()
   if latest_hvim_version ~= 'dev' then
     local current_hvim_version = require('hvim.util.version').get_hvim_current_version()

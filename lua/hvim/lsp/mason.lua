@@ -19,6 +19,6 @@ mason.setup({
 })
 
 mason_lspconfig.setup({
-  ensure_installed = require('hvim.defaults').lsp_servers,
+  ensure_installed = require('hvim.defaults').lsp_servers.ensure_installed,
   automatic_installation = true,
 })

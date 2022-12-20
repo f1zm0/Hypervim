@@ -1,18 +1,27 @@
 local M = {}
 
+M.startup_tasks = {
+  -- check if there is a new Hypervim release
+  check_hvim_updates = false,
+  -- run :PackerSync to update plugins (not recommended)
+  sync_plugins = false,
+}
+
 M.lsp_servers = {
-  'bashls',
-  'clangd',
-  'cssls',
-  'eslint',
-  'golangci_lint_ls',
-  'gopls',
-  'jsonls',
-  'pyright',
-  'rust_analyzer',
-  'sumneko_lua',
-  'tsserver',
-  'yamlls',
+  ensure_installed = {
+    'bashls',
+    'clangd',
+    'cssls',
+    'eslint',
+    'golangci_lint_ls',
+    'gopls',
+    'jsonls',
+    'pyright',
+    'rust_analyzer',
+    'sumneko_lua',
+    'tsserver',
+    'yamlls',
+  },
 }
 
 M.treesitter = {
@@ -22,6 +31,7 @@ M.treesitter = {
     'comment',
     'cpp',
     'css',
+    'dockerfile',
     'go',
     'gomod',
     'graphql',
@@ -51,8 +61,8 @@ M.copilot = {
 
 M.ui = {
   colorscheme = {
-    name = 'oxocarbon',
-    style = '',
+    name = 'tokyonight',
+    style = 'night',
   },
 }
 
