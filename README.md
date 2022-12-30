@@ -69,17 +69,19 @@ The first time you open Neovim, Packer will automatically install and compile al
 
 Below are some of the most important keymaps, for a full list see [keymaps.lua](#)
 
+<b>Leader key</b>: `,`
+
 <details><summary><code>Basic Keymaps</code> 🗺️</summary>
 <p>
 
 | Function                  | Keymap       |
 | ------------------------- | ------------ |
-| Leader Key                | `,`          |
 | Close everything and exit | `<leader>q`  |
 | Sync packages             | `<leader>ps` |
 | Delete buffer             | `<leader>d`  |
 | Close window              | `<leader>c`  |
 | Expand window             | `<leader>z`  |
+| Open file explorer        | `<leader>e`  |
 
 </p>
 </details>

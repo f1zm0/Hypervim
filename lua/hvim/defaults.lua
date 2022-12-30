@@ -1,5 +1,9 @@
 local M = {}
 
+M.keymaps = {
+  leader = ',',
+}
+
 M.startup_tasks = {
   -- check if there is a new Hypervim release
   check_hvim_updates = false,

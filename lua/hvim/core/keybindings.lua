@@ -1,7 +1,8 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
+
 -- leader key
-vim.g.mapleader = ','
+vim.g.mapleader = require('hvim.defaults').keymaps.leader
 
 -- quicker exit
 keymap('n', '<leader>q', '<cmd>qall<cr>', opts)
