@@ -41,4 +41,21 @@ M.completion = {
   Copilot = '  ',
 }
 
+M.diff = {
+  add = '',
+  modified = '',
+  remove = '',
+}
+
+M.git = {
+  branch = ' ',
+  unstaged = '✗',
+  staged = '✓',
+  unmerged = '',
+  renamed = '➜',
+  untracked = '★',
+  deleted = '',
+  ignored = '◌',
+}
+
 return M
