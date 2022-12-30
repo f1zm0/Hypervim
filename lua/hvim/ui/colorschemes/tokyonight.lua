@@ -1,5 +1,5 @@
 return {
-  style = 'night',
+  style = 'neo',
   transparent = false,
   terminal_colors = true,
   styles = {
@@ -16,15 +16,68 @@ return {
   dim_inactive = false,
   lualine_bold = false,
 
-  on_colors = function(colors)
-    colors.green1 = '#15b3e9'
-    colors.orange = '#96c5fa'
-    colors.blue = '#72a4fd'
-    colors.purple = '#c58efb'
-    colors.fg = '#cadafe'
-  end,
+  on_highlights = function(hl, c)
+    local colors = require('tokyonight.colors').neo
+    local util = require('tokyonight.util')
 
-  on_highlights = function(highlights, c)
-    highlights.NvimTreeFolderIcon = { bg = c.none, fg = c.orange }
+    -- slightly darker background to visually separate telescope
+    -- results prompt from standard background
+    local bg_alt = util.blend(colors.bg, '#000000', 0.92)
+
+    hl.NvimTreeFolderIcon = {
+      bg = c.none,
+      fg = c.fg_dark,
+    }
+    -- Visual fix for statusline bottom left part
+    -- that remains white for both active and inactive windows
+    hl.StatusLineNC = {
+      fg = colors.bg_dark,
+      bg = colors.bg_dark,
+    }
+    -- Telescope highlights
+    hl.TelescopePromptBorder = {
+      fg = colors.bg_dark,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopePromptNormal = {
+      fg = colors.fg,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopePromptTitle = {
+      fg = colors.fg,
+      bg = colors.bg_highlight,
+    }
+    hl.TelescopePromptCounter = {
+      fg = colors.yellow,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopePromptPrefix = {
+      fg = colors.fg_dark,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopeResultsBorder = {
+      fg = bg_alt,
+      bg = bg_alt,
+    }
+    hl.TelescopeResultsNormal = {
+      fg = colors.fg,
+      bg = bg_alt,
+    }
+    hl.TelescopeResultsTitle = {
+      fg = bg_alt,
+      bg = bg_alt,
+    }
+    hl.TelescopePreviewBorder = {
+      fg = colors.bg_dark,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopePreviewNormal = {
+      fg = colors.fg,
+      bg = colors.bg_dark,
+    }
+    hl.TelescopePreviewTitle = {
+      fg = colors.fg,
+      bg = colors.purple2,
+    }
   end,
 }
