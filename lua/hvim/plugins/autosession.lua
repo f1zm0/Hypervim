@@ -24,7 +24,7 @@ lens.setup({
   theme_conf = {
     layout_config = {
       width = 0.85,
-      height = 0.2,
+      height = 0.6,
     },
     borderchars = require('telescope.config').values.borderchars,
     layout_strategy = 'flex',
