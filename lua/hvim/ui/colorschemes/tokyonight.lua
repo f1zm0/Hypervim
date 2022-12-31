@@ -79,5 +79,93 @@ return {
       fg = colors.fg,
       bg = colors.purple2,
     }
+    hl.CmpItemKindColor = {
+      fg = colors.bg_dark,
+      bg = colors.yellow,
+    }
+    hl.CmpItemKindTypeParameter = {
+      bg = colors.bg_dark,
+      fg = colors.blue2,
+    }
+    hl.CmpItemKindEnum = {
+      bg = colors.bg_dark,
+      fg = colors.blue,
+    }
+    hl.CmpItemKindVariable = {
+      bg = colors.bg_dark,
+      fg = colors.magenta,
+    }
+    hl.CmpItemKindInterface = {
+      bg = colors.bg_dark,
+      fg = colors.green,
+    }
+    hl.CmpItemKindFunction = {
+      bg = colors.bg_dark,
+      fg = colors.purple,
+    }
+    hl.CmpItemKindMethod = {
+      bg = colors.bg_dark,
+      fg = colors.cyan,
+    }
+    hl.CmpItemKindConstructor = {
+      bg = colors.bg_dark,
+      fg = colors.blue3,
+    }
+    hl.CmpItemKindField = {
+      bg = colors.bg_dark,
+      fg = colors.yellow1,
+    }
+    hl.CmpItemKindModule = {
+      bg = colors.bg_dark,
+      fg = colors.green2,
+    }
+    hl.CmpItemKindMenu = {
+      bg = colors.bg_dark,
+      fg = colors.bg_dark,
+    }
+    hl.CmpItemKindStruct = {
+      bg = colors.bg_dark,
+      fg = colors.red,
+    }
+    hl.CmpItemKindCopilot = {
+      bg = colors.bg_dark,
+      fg = colors.teal,
+    }
+    hl.CmpItemKindSnippet = {
+      bg = colors.bg_dark,
+      fg = colors.blue4,
+    }
+    hl.CmpItemKindClass = {
+      bg = colors.bg_dark,
+      fg = colors.yellow,
+    }
+    hl.CmpItemKindUnit = {
+      bg = colors.bg_dark,
+      fg = colors.magenta2,
+    }
+    hl.CmpItemKindValue = {
+      bg = colors.bg_dark,
+      fg = colors.orange1,
+    }
+    hl.CmpItemKindAbbr = {
+      bg = colors.bg_dark,
+      fg = colors.yellow2,
+    }
+    hl.CmpItemKindAbbrMatch = {
+      bg = colors.bg_dark,
+      fg = colors.yellow2,
+    }
+    hl.CmpItemKindAbbrMatchFuzzy = {
+      bg = colors.bg_dark,
+      fg = colors.yellow2,
+    }
+    hl.CmpItemKindKeyword = {
+      bg = colors.bg_dark,
+      fg = colors.purple,
+    }
+    hl.CmpItemKindText = {
+      bg = colors.bg_dark,
+      fg = colors.fg,
+    }
   end,
 }
