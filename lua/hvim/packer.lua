@@ -96,9 +96,7 @@ packer.startup(function(use)
   use('stevearc/aerial.nvim')
 
   -- Colorschemes
-  use('folke/tokyonight.nvim')
-  use({ 'nyoom-engineering/oxocarbon.nvim' })
-  use({ 'catppuccin/nvim', as = 'catppuccin' })
+  use('f1zm0/tokyonight.nvim')
 
   -- Sessions
   use('rmagatti/auto-session')
