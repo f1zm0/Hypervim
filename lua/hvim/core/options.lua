@@ -33,7 +33,7 @@ g.nowb = true
 opt.clipboard = 'unnamedplus' -- share clipboard with system
 
 -- Transparent cmp window background
-opt.pumblend = 25
+opt.pumblend = 5
 
 -- Diagnostics
 vim.diagnostic.config({
