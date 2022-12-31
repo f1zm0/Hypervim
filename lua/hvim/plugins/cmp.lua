@@ -19,9 +19,6 @@ end
 -- kind icons
 local kind_icons = require('hvim.ui.icons').completion
 
--- custom highlights
-vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { bg = '#dddddd', fg = '#222222' })
-
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
@@ -32,14 +29,14 @@ cmp.setup({
   },
   window = {
     completion = {
-      border = 'rounded',
+      border = '',
       max_width = 60,
       min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
       min_height = 3,
     },
     documentation = {
-      border = 'rounded',
+      border = '',
       max_width = 60,
       min_width = 40,
       max_height = math.floor(vim.o.lines * 0.4),
