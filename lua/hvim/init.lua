@@ -1,10 +1,31 @@
 -- compatibility check
 require('hvim.util.version').check_nvim_version()
 
-require('impatient')
+-- set global vars
+local globals = require('hvim.defaults').globals
+for k, v in pairs(globals) do
+  vim.g[k] = v
+end
 
-require('hvim.core.options')
-require('hvim.core.keybindings')
+-- set options
+local options = require('hvim.defaults').options
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
+-- load default keymaps
+require('hvim.util.keymaps').load_keymaps(require('hvim.defaults').keymaps)
+
+-- setup default diagnostics config
+local diagnostics = require('hvim.defaults').diagnostics
+vim.diagnostic.config(diagnostics)
+
+-- disable built-in plugins for optimization
+for _, p in pairs(require('hvim.defaults').disabled_built_ins) do
+  vim.g['loaded_' .. p] = 1
+end
+
+require('impatient')
 require('hvim.packer')
 require('hvim.hacks')
 require('hvim.ui')
