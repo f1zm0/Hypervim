@@ -18,24 +18,14 @@ end
 -- use the github API to retrieve the latest tag name
 -- return the latest release version or nil
 function M.get_latest_hvim_version()
-  local ok, response = pcall(
-    vim.fn.json_decode,
-    vim.fn.system({
-      'curl',
-      '-s',
-      '-H',
-      'Accept: application/vnd.github.v3+json',
-      'https://api.github.com/repos/f1zm0/Hypervim/releases/latest',
-    })
-  )
   local _, out, errors = exec('curl', {
     '-s',
     '-H',
     'Accept: application/vnd.github.v3+json',
     'https://api.github.com/repos/f1zm0/Hypervim/releases/latest',
   })
-  response = vim.fn.json_decode(out)
-  if not ok or response.tag_name == nil then
+  local response = vim.fn.json_decode(out)
+  if not vim.tbl_isempty(errors) or response.tag_name == nil then
     return nil
   end
   return response.tag_name
