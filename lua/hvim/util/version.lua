@@ -32,14 +32,16 @@ function M.get_latest_hvim_version()
 end
 
 -- get latest tag name or commit number
+-- @return string: latest tag name or commit number
 function M.get_hvim_current_version()
   -- use git_cmd function to run git command
-  local _, out, err = exec('git', {
+  local _, out, errors = exec('git', {
     args = { 'describe', '--tags', '--always' },
   })
-  if err ~= '' then
+  if not vim.tbl_isempty(errors) then
     return 'dev'
   end
+
   return out[1]
 end
 
