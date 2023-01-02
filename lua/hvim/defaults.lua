@@ -126,8 +126,8 @@ M.keymaps = {
   insert_mode = {},
   visual_mode = {
     -- quicker indentation
-    ['>'] = '<gv',
-    ['<'] = '>gv',
+    ['<'] = '<gv',
+    ['>'] = '>gv',
   },
   visual_block_mode = {
     -- Move current line up/down
