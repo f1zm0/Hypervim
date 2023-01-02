@@ -1,5 +1,7 @@
 local M = {}
 
+local exec = require('hvim.util.jobs').exec
+
 -- check if current neovim version is greater or equal v0.7.0
 -- return true if it is, false otherwise
 function M.check_nvim_version()
@@ -13,32 +15,42 @@ function M.check_nvim_version()
   return true
 end
 
--- use the github API to retrieve the latest release version of the repository
--- at github.com/f1zm0/Hpervim. If response status code is 404 return 'dev'
+-- use the github API to retrieve the latest tag name
+-- return the latest release version or nil
 function M.get_latest_hvim_version()
-  local response = vim.fn.system({
-    'curl',
+  local ok, response = pcall(
+    vim.fn.json_decode,
+    vim.fn.system({
+      'curl',
+      '-s',
+      '-H',
+      'Accept: application/vnd.github.v3+json',
+      'https://api.github.com/repos/f1zm0/Hypervim/releases/latest',
+    })
+  )
+  local _, out, errors = exec('curl', {
     '-s',
     '-H',
     'Accept: application/vnd.github.v3+json',
     'https://api.github.com/repos/f1zm0/Hypervim/releases/latest',
   })
-  -- check if response status code is 404
-  if response:find('Not Found') then
-    return 'dev'
+  response = vim.fn.json_decode(out)
+  if not ok or response.tag_name == nil then
+    return nil
   end
-
-  -- extract tag name
-  local tag_name = vim.fn.json_decode(response).tag_name
-  if tag_name == nil then
-    return 'dev'
-  end
-  return tag_name
+  return response.tag_name
 end
 
+-- get latest tag name or commit number
 function M.get_hvim_current_version()
-  -- HACK: find a way to retrieve the current version in use
-  return M.get_latest_hvim_version()
+  -- use git_cmd function to run git command
+  local _, out, err = exec('git', {
+    args = { 'describe', '--tags', '--always' },
+  })
+  if err ~= '' then
+    return 'dev'
+  end
+  return out[1]
 end
 
 return M
