@@ -1,5 +1,7 @@
 local M = {}
 
+-- adapters to allow the use of more user friendly
+-- mode name in keymaps definitions
 local mode_adapters = {
   insert_mode = 'i',
   normal_mode = 'n',
@@ -9,17 +11,21 @@ local mode_adapters = {
   terminal_mode = 't',
 }
 
-local generic_opts_any = { noremap = true, silent = true }
-
-local generic_opts = {
-  insert_mode = generic_opts_any,
-  normal_mode = generic_opts_any,
-  visual_mode = generic_opts_any,
-  visual_block_mode = generic_opts_any,
-  command_mode = generic_opts_any,
-  term_mode = { silent = true },
+local generic_opts_any = {
+  noremap = true,
+  silent = true,
 }
 
+local generic_opts = {
+  terminal_mode = {
+    silent = true,
+  },
+}
+
+-- register a set of keymaps for the given mode
+-- @param mode string
+-- @param mappings table
+-- @return nil
 function M.register_keymaps(mode, mappings)
   if mode_adapters[mode] then
     -- prepare opts
@@ -41,6 +47,9 @@ function M.register_keymaps(mode, mappings)
   end
 end
 
+-- register a set of keymaps
+-- @param mappings table
+-- @return nil
 function M.load_keymaps(keymaps)
   for mode, mappings in pairs(keymaps) do
     M.register_keymaps(mode, mappings)

@@ -42,7 +42,6 @@ end
 -- get latest tag name or commit number
 -- @return string: latest tag name or commit number
 function M.get_hvim_current_version()
-  -- use git_cmd function to run git command
   local _, out, errors = exec('git', {
     args = { 'describe', '--tags', '--always' },
   })
