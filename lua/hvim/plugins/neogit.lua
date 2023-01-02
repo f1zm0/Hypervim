@@ -1,0 +1,5 @@
+return {
+  integrations = {
+    diffview = true,
+  },
+}

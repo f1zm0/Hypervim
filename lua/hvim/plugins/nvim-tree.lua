@@ -1,14 +1,9 @@
-local status_ok, tree = pcall(require, 'nvim-tree')
-if not status_ok then
-  return
-end
-
-local keybindings = {
+local list_mappings = {
   { key = { 'l', '<CR>', 'o' }, action = 'edit', mode = 'n' },
   { key = 'h', action = 'close_node', mode = 'n' },
 }
 
-tree.setup({
+return {
   sort_by = 'case_sensitive',
   update_focused_file = {
     enable = true,
@@ -18,7 +13,7 @@ tree.setup({
   view = {
     adaptive_size = true,
     mappings = {
-      list = keybindings,
+      list = list_mappings,
     },
   },
   diagnostics = {
@@ -63,4 +58,4 @@ tree.setup({
       'node_modules',
     },
   },
-})
+}

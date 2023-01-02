@@ -1,11 +1,6 @@
-local status_ok, scrollbar = pcall(require, 'scrollbar')
-if not status_ok then
-  return
-end
-
 local colors = require('tokyonight.colors').neo
 
-scrollbar.setup({
+return {
   show_in_active_only = true,
   excluded_filetypes = {
     'prompt',
@@ -25,4 +20,4 @@ scrollbar.setup({
     Hint = { color = colors.magenta },
     Misc = { color = colors.purple },
   },
-})
+}

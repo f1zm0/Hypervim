@@ -1,8 +1,3 @@
-local status_ok, alpha = pcall(require, 'alpha')
-if not status_ok then
-  return
-end
-
 local hvim_version = require('hvim.util.version').get_hvim_current_version()
 local curr_time = require('hvim.util.datetime').get_current_time()
 local plugins_count = require('hvim.util.plugins').get_installed_plugins()
@@ -102,7 +97,7 @@ local section_footer = {
   },
 }
 
-local opts = {
+return {
   layout = {
     { type = 'padding', val = 2 },
     section_header,
@@ -116,5 +111,3 @@ local opts = {
     margin = 2,
   },
 }
-
-alpha.setup(opts)

@@ -1,11 +1,6 @@
-local status_ok, lsp_signature = pcall(require, 'lsp_signature')
-if not status_ok then
-  return
-end
-
 local hints_icons = require('hvim.ui.icons').hints
 
-local cfg = {
+return {
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath('cache') .. '/lsp_signature.log', -- log dir when debug is on
   verbose = false,
@@ -40,5 +35,3 @@ local cfg = {
   select_signature_key = nil,
   move_cursor_key = nil,
 }
-
-lsp_signature.setup(cfg)

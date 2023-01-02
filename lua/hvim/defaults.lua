@@ -1,40 +1,92 @@
 local M = {}
 
-M.globals = {
-  mapleader = ',',
-  noswapfile = true,
-  nobackup = true,
-  nowritebackup = true,
-  nowb = true,
+M.core = {
+  globals = {
+    mapleader = ',',
+    noswapfile = true,
+    nobackup = true,
+    nowritebackup = true,
+    nowb = true,
+  },
+  options = {
+    ignorecase = false,
+    hlsearch = true,
+    ruler = false,
+    number = true,
+    relativenumber = true,
+    showmatch = true,
+    hidden = true, -- buffers
+    cursorline = true, -- file navigation
+    expandtab = true,
+    smartindent = true,
+    shiftwidth = 4,
+    tabstop = 4,
+    clipboard = 'unnamedplus',
+    pumblend = 5, -- popup bg transparency
+    updatetime = 300,
+  },
+  keymaps = {
+    normal_mode = {
+      -- quicker exit
+      ['<leader>q'] = '<cmd>qall<cr>',
+      ['<leader>wq'] = '<cmd>wqall<cr>',
+
+      -- buffer navigation and management
+      ['<Tab>'] = '<cmd>bnext<cr>',
+      ['<S-Tab>'] = '<cmd>bprev<cr>',
+      ['<leader>d'] = '<cmd>bp | bd #<cr>',
+      ['<leader>c'] = '<C-w>c',
+
+      -- window navigation
+      ['<c-h>'] = '<C-w>h',
+      ['<c-j>'] = '<C-w>j',
+      ['<c-k>'] = '<C-w>k',
+      ['<c-l>'] = '<C-w>l',
+
+      -- window resizing
+      ['<c-Left>'] = '<cmd>vertical resize -2<cr>',
+      ['<c-Down>'] = '<cmd>resize +2<cr>',
+      ['<c-Up>'] = '<cmd>resize -2<cr>',
+      ['<c-Right>'] = '<cmd>vertical resize +2<cr>',
+
+      -- faster splits
+      ['\\'] = '<cmd>split<cr>',
+      ['|'] = '<cmd>vsplit<cr>',
+
+      -- Move current line up/down
+      ['<A-j>'] = ":m '>+1<CR>gv-gv",
+      ['<A-k>'] = ":m '<-2<CR>gv-gv",
+
+      -- open config entrypoint
+      ['<leader>rc'] = '<cmd>e ' .. os.getenv('MYVIMRC') .. '<cr>',
+
+      -- packer sync and clean plugins
+      ['<leader>ps'] = '<cmd>PackerSync<cr>',
+      ['<leader>pc'] = '<cmd>PackerClean<cr>',
+
+      -- show diagnostics info for hovered item in a float pane
+      ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
+
+      -- open trouble pane with diagnostics and quickfixes
+      ['<leader>tt'] = '<cmd>TroubleToggle<cr>',
+    },
+    insert_mode = {},
+    visual_mode = {
+      -- quicker indentation
+      ['<'] = '<gv',
+      ['>'] = '>gv',
+    },
+    visual_block_mode = {
+      -- Move current line up/down
+      ['<A-j>'] = ":m '>+1<CR>gv-gv",
+      ['<A-k>'] = ":m '<-2<CR>gv-gv",
+    },
+    command_mode = {},
+    terminal_mode = {},
+  },
 }
 
-M.options = {
-  ignorecase = false,
-  hlsearch = true,
-  ruler = false,
-  number = true,
-  relativenumber = true,
-  showmatch = true,
-  hidden = true, -- buffers
-  cursorline = true, -- file navigation
-  expandtab = true,
-  smartindent = true,
-  shiftwidth = 4,
-  tabstop = 4,
-  clipboard = 'unnamedplus',
-  pumblend = 5, -- popup bg transparency
-  updatetime = 300,
-}
-
-M.startup_tasks = {
-  -- check if there is a new Hypervim release
-  check_hvim_updates = false,
-  -- run :PackerSync to update plugins (not recommended)
-  sync_plugins = false,
-}
-
-M.lsp_servers = {
-  -- LSP servers to install
+M.lsp = {
   ensure_installed = {
     'bashls',
     'clangd',
@@ -52,90 +104,117 @@ M.lsp_servers = {
 }
 
 M.treesitter = {
-  -- parsers to install
   ensure_installed = {
     'bash',
-    'c',
-    'comment',
-    'cpp',
     'css',
     'dockerfile',
     'go',
-    'gomod',
     'graphql',
     'html',
     'javascript',
     'json',
     'lua',
-    'markdown',
     'python',
     'regex',
     'rust',
     'toml',
-    'tsx',
     'typescript',
     'yaml',
   },
 }
 
-M.keymaps = {
-  normal_mode = {
-    -- quicker exit
-    ['<leader>q'] = '<cmd>qall<cr>',
-    ['<leader>wq'] = '<cmd>wqall<cr>',
+M.cmp = {}
 
-    -- buffer navigation and management
-    ['<Tab>'] = '<cmd>bnext<cr>',
-    ['<S-Tab>'] = '<cmd>bprev<cr>',
-    ['<leader>d'] = '<cmd>bp | bd #<cr>',
-    ['<leader>c'] = '<C-w>c',
-
-    -- window navigation
-    ['<c-h>'] = '<C-w>h',
-    ['<c-j>'] = '<C-w>j',
-    ['<c-k>'] = '<C-w>k',
-    ['<c-l>'] = '<C-w>l',
-
-    -- window resizing
-    ['<c-Left>'] = '<cmd>vertical resize -2<cr>',
-    ['<c-Down>'] = '<cmd>resize +2<cr>',
-    ['<c-Up>'] = '<cmd>resize -2<cr>',
-    ['<c-Right>'] = '<cmd>vertical resize +2<cr>',
-
-    -- faster splits
-    ['\\'] = '<cmd>split<cr>',
-    ['|'] = '<cmd>vsplit<cr>',
-
-    -- Move current line up/down
-    ['<A-j>'] = ":m '>+1<CR>gv-gv",
-    ['<A-k>'] = ":m '<-2<CR>gv-gv",
-
-    -- open config entrypoint
-    ['<leader>rc'] = '<cmd>e ' .. os.getenv('MYVIMRC') .. '<cr>',
-
-    -- packer sync and clean plugins
-    ['<leader>ps'] = '<cmd>PackerSync<cr>',
-    ['<leader>pc'] = '<cmd>PackerClean<cr>',
-
-    -- show diagnostics info for hovered item in a float pane
-    ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
-
-    -- open trouble pane with diagnostics and quickfixes
-    ['<leader>tt'] = '<cmd>TroubleToggle<cr>',
+M.sessions = {
+  options = {
+    -- TODO: customize autosave and stuff
   },
-  insert_mode = {},
-  visual_mode = {
-    -- quicker indentation
-    ['<'] = '<gv',
-    ['>'] = '>gv',
+  keymaps = {
+    normal_mode = {
+      ['<c-s>'] = '<cmd>SessionSave<cr>',
+      ['<leader>fs'] = '<cmd>SearchSession<cr>',
+    },
   },
-  visual_block_mode = {
-    -- Move current line up/down
-    ['<A-j>'] = ":m '>+1<CR>gv-gv",
-    ['<A-k>'] = ":m '<-2<CR>gv-gv",
+}
+
+M.plugins = {
+  aerial = {},
+  alpha = {},
+  ['nvim-autopairs'] = {},
+  bufferline = {
+    keymaps = {
+      normal_mode = {
+        ['<Tab>'] = '<cmd>BufferLineCycleNext<cr>',
+        ['<S-Tab>'] = '<cmd>BufferLineCyclePrev<cr>',
+      },
+    },
   },
-  command_mode = {},
-  terminal_mode = {},
+  colorizer = {},
+  gitsigns = {},
+  fidget = {},
+  indent_blankline = {},
+  lsp_signature = {},
+  lualine = {},
+  mason = {},
+  ['mason-lspconfig'] = {},
+  neogit = {},
+  ['null-ls'] = {},
+  ['nvim-tree'] = {
+    keymaps = {
+      normal_mode = {
+        ['<leader>e'] = '<cmd>NvimTreeToggle<cr>',
+      },
+    },
+  },
+  nvim_comment = {},
+  scrollbar = {},
+  telescope = {
+    keymaps = {
+      normal_mode = {
+        ['<leader>ff'] = '<cmd>Telescope find_files<cr>',
+        ['<leader>fg'] = '<cmd>Telescope live_grep<cr>',
+        ['<leader>fb'] = '<cmd>Telescope buffers<cr>',
+        ['<leader>fh'] = '<cmd>Telescope help_tags<cr>',
+        ['<leader>fr'] = '<cmd>Telescope oldfiles<cr>',
+        ['<leader>fn'] = '<cmd>Telescope notify<cr>',
+      },
+    },
+    extensions = {
+      'fzf',
+      'notify',
+    },
+  },
+  ['todo-comments'] = {
+    keymaps = {
+      normal_mode = {
+        ['<leader>ft'] = '<cmd>TodoTelescope<cr>',
+      },
+    },
+  },
+  trouble = {
+    keymaps = {
+      normal_mode = {
+        ['<leader>tt'] = '<cmd>TroubleToggle<cr>',
+        ['<leader>tw'] = '<cmd>Trouble workspace_diagnostics<cr>',
+        ['<leader>td'] = '<cmd>Trouble document_diagnostics<cr>',
+        ['<leader>tq'] = '<cmd>Trouble quickfix<cr>',
+      },
+    },
+  },
+  windows = {
+    keymaps = {
+      normal_mode = {
+        ['<leader>z'] = '<cmd>WindowMaximize<cr>',
+      },
+    },
+  },
+}
+
+M.startup_tasks = {
+  -- check if there is a new Hypervim release
+  check_hvim_updates = false,
+  -- run :PackerSync to update plugins (not recommended)
+  sync_plugins = false,
 }
 
 -- Markdown files preview options

@@ -1,8 +1,3 @@
-local status_ok, lualine = pcall(require, 'lualine')
-if not status_ok then
-  return
-end
-
 local colors = require('tokyonight.colors').neo
 local icons = require('hvim.ui.icons')
 local pu = require('hvim.util.path')
@@ -85,7 +80,7 @@ local custom_sections = {
   },
 }
 
-lualine.setup({
+return {
   options = {
     theme = neotokyo,
     component_separators = '',
@@ -128,4 +123,4 @@ lualine.setup({
     lualine_z = {},
   },
   extensions = { 'nvim-tree', 'aerial' },
-})
+}

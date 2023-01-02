@@ -1,9 +1,4 @@
-local status_ok, telescope = pcall(require, 'telescope')
-if not status_ok then
-  return
-end
-
-telescope.setup({
+return {
   defaults = {
     -- ignore files in directories
     file_ignore_patterns = {
@@ -39,8 +34,4 @@ telescope.setup({
       preview_cutoff = 120,
     },
   },
-})
-
--- extensions
-telescope.load_extension('notify')
-telescope.load_extension('fzf')
+}
