@@ -1,22 +1,30 @@
 local M = {}
 
 local exec = require('hvim.util.jobs').exec
+local min_required_version = {
+  major = 0,
+  minor = 8,
+  patch = 0,
+}
 
--- check if current neovim version is greater or equal v0.7.0
--- return true if it is, false otherwise
+-- check current neovim version
+-- @return boolean: true if version is greater or equal min_required_version
 function M.check_nvim_version()
   local current_version = vim.api.nvim_command_output(':version'):match('(%d+%.%d+%.%d+)')
   local major, minor, patch = current_version:match('(%d+)%.(%d+)%.(%d+)')
   major, minor, patch = tonumber(major), tonumber(minor), tonumber(patch)
-  if major < 0 or minor < 7 then
-    print('Hypervim requires Neovim v0.7.0 or higher, please update your Neovim version')
+
+  if major < min_required_version.major or minor < min_required_version.minor then
+    local min_version = table.concat(min_required_version, '.')
+    print('Hypervim requires Neovim' .. min_version .. 'or higher, please upgrade your Neovim version')
     return false
   end
+
   return true
 end
 
 -- use the github API to retrieve the latest tag name
--- return the latest release version or nil
+-- @return string: latest tag name
 function M.get_latest_hvim_version()
   local _, out, errors = exec('curl', {
     '-s',
