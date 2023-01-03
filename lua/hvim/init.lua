@@ -26,10 +26,7 @@ for _, p in pairs(require('hvim.defaults').disabled_built_ins) do
 end
 
 -- setup components
-local imp_ok, impatient = pcall(require, 'impatient')
-if imp_ok then
-  impatient.enable_profile()
-end
+local _, impatient = pcall(require, 'impatient')
 
 require('hvim.packer')
 require('hvim.hacks')
