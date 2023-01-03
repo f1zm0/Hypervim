@@ -1,14 +1,4 @@
-local gs_status_ok, gitsigns = pcall(require, 'gitsigns')
-if not gs_status_ok then
-  return
-end
-
-local ng_status_ok, neogit = pcall(require, 'neogit')
-if not ng_status_ok then
-  return
-end
-
-gitsigns.setup({
+return {
   signs = {
     add = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
     change = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
@@ -51,10 +41,4 @@ gitsigns.setup({
   yadm = {
     enable = false,
   },
-})
-
-neogit.setup({
-  integrations = {
-    diffview = true,
-  },
-})
+}

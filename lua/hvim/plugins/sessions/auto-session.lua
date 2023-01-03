@@ -1,12 +1,9 @@
-local as_status_ok, sessions = pcall(require, 'auto-session')
-local sl_status_ok, lens = pcall(require, 'session-lens')
-if not (as_status_ok and sl_status_ok) then
+local status_ok, autosess = pcall(require, 'auto-session')
+if not status_ok then
   return
 end
 
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
-
-local opts = {
+autosess.setup({
   log_level = 'info',
   auto_session_enable_last_session = false,
   auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
@@ -15,13 +12,10 @@ local opts = {
   auto_restore_enabled = false,
   auto_session_suppress_dirs = nil,
   auto_session_use_git_branch = nil,
-}
-
-sessions.setup(opts)
-
-lens.setup({
-  path_display = { 'shorten' },
 })
+
+-- auto-sessions
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 -- close NvimTree buffer when exiting, open it at startup
 vim.api.nvim_exec(

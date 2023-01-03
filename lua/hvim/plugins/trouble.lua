@@ -1,9 +1,4 @@
-local status_ok, trouble = pcall(require, 'trouble')
-if not status_ok then
-  return
-end
-
-local opts = {
+return {
   position = 'bottom',
   height = 10,
   width = 50,
@@ -40,5 +35,3 @@ local opts = {
   auto_jump = { 'lsp_definitions' },
   use_diagnostic_signs = true,
 }
-
-trouble.setup(opts)

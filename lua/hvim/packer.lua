@@ -1,21 +1,21 @@
 -- automatically install packer if not installed
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path,
-  })
-  print('Installing packer...')
-  vim.cmd([[packadd packer.nvim]])
+local ensure_packer_installed = function()
+  local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    PACKER_BOOTSTRAP = vim.fn.system({
+      'git',
+      'clone',
+      '--depth',
+      '1',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path,
+    })
+    print('Installing packer...')
+    vim.cmd([[packadd packer.nvim]])
+  end
 end
 
--- call to packer with guard to avoid errors at first start
+local _ = ensure_packer_installed()
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
@@ -39,6 +39,8 @@ packer.startup(function(use)
   use('kyazdani42/nvim-web-devicons')
   use('MunifTanjim/nui.nvim')
   use('windwp/nvim-autopairs')
+  use('rcarriga/nvim-notify')
+  use('lewis6991/impatient.nvim')
 
   -- Syntax highligther
   use({
@@ -52,6 +54,7 @@ packer.startup(function(use)
 
   -- Telescope
   use({ 'nvim-telescope/telescope.nvim', tag = '0.1.0' })
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   -- LSP
   use({
@@ -86,16 +89,21 @@ packer.startup(function(use)
   use('lukas-reineke/indent-blankline.nvim')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
-  use('folke/tokyonight.nvim')
   use({ 'anuvyklack/windows.nvim', requires = {
     'anuvyklack/middleclass',
   } })
   use('petertriho/nvim-scrollbar')
   use('stevearc/aerial.nvim')
 
+  -- Colorschemes
+  use('f1zm0/tokyonight.nvim')
+
   -- Sessions
   use('rmagatti/auto-session')
-  use('rmagatti/session-lens')
+  use({
+    'rmagatti/session-lens',
+    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+  })
 
   -- File explorer
   use('kyazdani42/nvim-tree.lua')
@@ -137,6 +145,7 @@ packer.startup(function(use)
     end,
   })
 
+  -- Auto-install plugins after setting up packer
   if PACKER_BOOTSTRAP then
     packer.sync()
   end
