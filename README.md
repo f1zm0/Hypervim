@@ -23,9 +23,9 @@
 </p>
 
 <p align="center">
-  <a href="#features">Features</a> •
+  <a href="#-features">Features</a> •
   <a href="#installation">Installation</a> •
-  <a href="#keymaps">Keymaps</a>
+  <a href="#%EF%B8%8F-keymaps">Keymaps</a>
 </p>
 
 ## ☄️ Showcase
