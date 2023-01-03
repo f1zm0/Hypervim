@@ -109,8 +109,6 @@ function main() {
 
   if [ "$ARGS_LOCAL" -eq 1 ]; then
     link_local_hvim
-  elif [ -d "$HYPERVIM_BASE_DIR" ]; then
-    validate_hvim_files
   else
     clone_hvim
   fi
@@ -176,6 +174,7 @@ function check_neovim_min_version() {
   fi
 }
 
+# TODO: review to avoid blocking here
 function validate_hvim_files() {
   local verify_version_cmd='if v:errmsg != "" | cquit | else | quit | endif'
   if ! "$INSTALL_PREFIX/bin/hvim" --headless -c "$verify_version_cmd" &>/dev/null; then
@@ -186,7 +185,7 @@ function validate_hvim_files() {
 }
 
 function check_system_deps() {
-    local deps_list = ("curl" "git" "node" "npm" "make" "cc" "fzf" "ripgrep")
+    local deps_list=("curl" "git" "npm" "make" "cc" "fzf")
 
     for dep in "${deps_list[@]}"; do
         if ! command -v "$dep" &>/dev/null; then
@@ -278,14 +277,14 @@ function create_executable() {
     rm -rf "$dst"
   fi
 
-cat >dst" << EOF
+cat <<EOF >"$dst"
 #!/bin/sh
 
 export HYPERVIM_RUNTIME_DIR="${HYPERVIM_RUNTIME_DIR:-"$XDG_DATA_HOME/hypervim"}"
 export HYPERVIM_CONFIG_DIR="${HYPERVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/hvim"}"
 export HYPERVIM_CACHE_DIR="${HYPERVIM_CACHE_DIR:-"$XDG_CACHE_HOME/hvim"}"
 
-exec nvim -u "$HYPERVIM_RUNTIME_DIR/dvim/init.lua" "$@"
+exec nvim -u "$HYPERVIM_RUNTIME_DIR/hvim/init.lua" "$@"
 EOF
 
   chmod +x "$dst"
@@ -321,6 +320,7 @@ function setup_hvim() {
 
 function print_logo() {
   cat <<'EOF'
+
   ⠀⠀⠀⠀⠀⢀⣤⣴⡦⠀⠀⠀⠀⠀⢀⣴⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⣼⣿⣿⠇⠀⠀⠀⠀⢀⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⢀⣿⣿⡿⠀⠀⠀⠀⠀⣼⡿⠀⠀⠀⠀⠀⢀⣀⣠⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣦⠀⠀⠀⠀⠀⠀⣠⠞⠁⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -331,6 +331,7 @@ function print_logo() {
   ⠀⢀⣿⣿⠃⠀⠀⠀⠀⣸⣿⡟⠀⠀⣴⠟⠋⠀⢀⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀⠘⠻⠿⠿⠛⠛⠋⠉⠁⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠀⠀⠀⠘⠛⠛⠋⠉⠉⠉⠉⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⢿⡇⠀
   ⠀⡼⠉⠀⠀⠀⠀⠀⠀⠈⠛⠁⠀⠞⠃⠀⠀⠠⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀
   ⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃
+
 EOF
 }
 
