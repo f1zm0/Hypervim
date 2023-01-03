@@ -8,8 +8,8 @@
   <a href="https://github.com/f1zm0/Hypervim/commits/master">
     <img src="https://img.shields.io/github/last-commit/f1zm0/Hypervim?style=for-the-badge&logo=github&color=ccfd66&logoColor=white&labelColor=2b2c33" style="max-width: 100%;">
   </a>
-<a href="https://github.com/f1zm0/Hypervim/LICENSE">
-    <img src="https://img.shields.io/github/license/f1zm0/Hypervim?style=for-the-badge&color=3f41a5&logo=bookstack&logoColor=white&labelColor=2b2c33" alt="project license">
+<a href="https://github.com/f1zm0/Hypervim">
+    <img src="https://img.shields.io/github/license/f1zm0/Hypervim?style=for-the-badge&color=3f41a5&logo=bookstack&logoColor=white&labelColor=2b2c34" alt="project license">
 </a>
 <br/>
 <a href="https://github.com/f1zm0/Hypervim/issues">
