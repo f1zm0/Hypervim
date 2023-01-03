@@ -28,7 +28,7 @@
   <a href="#keymaps">Keymaps</a>
 </p>
 
-## Showcase
+## ☄️ Showcase
 
 <p align="center">
  <a href="static/showcase/01.png" target="_blank">
@@ -45,7 +45,7 @@
  </a>
 </p>
 
-## Features
+## ✨ Features
 
 - 💡 Linting, Completion and formatting with [native LSP](https://neovim.io/doc/user/lsp.html), [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) and [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - 🩺 Diagnostics and quickfixes with [Trouble](https://github.com/folke/trouble.nvim)
@@ -54,11 +54,13 @@
 - ✂️ Code snippets powered by [LuaSnip](https://github.com/sirverL3MON4D3/LuaSnip)
 - 📁 Simple file browsing with [NvimTree](https://github.com/nvim-tree/nvim-tree.lua)
 - 🪟 Session management with [auto-sessions](https://github.com/rmagatti/auto-session) and [session-lens](https://github.com/rmagatti/session-lens)
-- 📖 Live preview of md files with [MarkdownPreview](https://github.com/iamcco/markdown-preview.nvim)
+- 🌐 Live preview of md files with [MarkdownPreview](https://github.com/iamcco/markdown-preview.nvim)
 - 👁️ Global statusline and Winbar with [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - 🤖 Copilot support with [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
 
-## Requirements
+## 🚀 Quickstart
+
+### Requirements
 
 The following tools are required:
 
@@ -69,7 +71,7 @@ The following tools are required:
 - `gcc` or `clang`
 - `make`
 
-## Installation
+### Installation
 
 ```sh
 # backup current config [optional, but recommended]
@@ -83,9 +85,9 @@ When you first open Neovim, it will install the required plugins and Treesitter 
 
 > IMPORTANT NOTE: Hypervim is alpha software. I'll do my best to keep the main branch as stable as possible and the documentation up-to-date, but this may not always be guaranteed at this stage.
 
-## Keymaps
+## ⌨️ Keymaps
 
-Below are some of the most important keymaps, for a full list see [keymaps.lua](#)
+Below are some of the most important keymaps. For a more comprehensive list of core and plugin-specific keymaps check out [defaults.lua](lua/hvim/defaults.lua)
 
 <b>Leader key</b>: `,`
 
@@ -188,19 +190,19 @@ Below are some of the most important keymaps, for a full list see [keymaps.lua](
 </p>
 </details>
 
-## Copilot support
+## 🤖 Copilot support
 
 When you want to start using Copiot, you first need to run `:Copilot auth` command, and complete the authentication process.
 
 For more info refer to the [plugin documentation](https://github.com/zbirenbaum/copilot.lua)
 
-## Contributing
+## 🤝 Contributing
 
-Any kind of contribution is welcome 🤝
+Any kind of contribution is welcome.
 
 If you have any suggestions, ideas or bug reports, please open an issue.
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 Big shout-out to the Neovim community and to the creators of the following projects that have inspired this configuration:
 
@@ -208,6 +210,6 @@ Big shout-out to the Neovim community and to the creators of the following proje
 - [NvChad by siduck & contributors](https://github.com/NvChad/NvChad)
 - All [plugins](lua/hvim/packer.lua#35) authors and contributors
 
-## License
+## 📖 License
 
 This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) file for details.
