@@ -9,6 +9,7 @@ M.core = {
     nowb = true,
   },
   options = {
+    termguicolors = true,
     ignorecase = false,
     hlsearch = true,
     ruler = false,
