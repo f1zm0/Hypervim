@@ -3,39 +3,31 @@ set -eo pipefail
 
 declare HV_BRANCH="main" # stable branch
 declare -r HV_REMOTE="f1zm0/Hypervim.git"
-declare -r INSTALL_PREFIX="$HOME/.local"
 
 declare -r XDG_DATA_HOME="$HOME/.local/share"
 declare -r XDG_CACHE_HOME="$HOME/.cache"
 declare -r XDG_CONFIG_HOME="$HOME/.config"
 
-declare -r HYPERVIM_RUNTIME_DIR="$XDG_DATA_HOME/Hypervim"
 declare -r HYPERVIM_CONFIG_DIR="$XDG_CONFIG_HOME/hvim"
 declare -r HYPERVIM_CACHE_DIR="$XDG_CACHE_HOME/hvim"
-declare -r HYPERVIM_BASE_DIR="$HYPERVIM_RUNTIME_DIR/hvim"
+declare -r HYPERVIM_BASE_DIR="$XDG_CONFIG_HOME/hvim"
 
-declare BASEDIR
-BASEDIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-BASEDIR="$(dirname -- "$(dirname -- "$BASEDIR")")"
-readonly BASEDIR
+declare -r INSTALL_PREFIX="$HOME/.local"
 
-declare ARGS_LOCAL=0
 declare ARGS_OVERWRITE=0
 declare ARGS_INSTALL_DEPENDENCIES=1
 declare INTERACTIVE_MODE=1
 
 declare -a __hvim_dirs=(
   "$HYPERVIM_CONFIG_DIR"
-  "$HYPERVIM_RUNTIME_DIR"
   "$HYPERVIM_CACHE_DIR"
 )
 
 function usage() {
-  echo "Usage: install.sh [<options>]"
+  echo "Usage: setup.sh [<options>]"
   echo ""
   echo "Options:"
   echo "    -h, --help                    Print this help message"
-  echo "    -l, --local                   Install local copy of Hypervim"
   echo "    -y, --yes                     Disable confirmation prompts (answer yes to all questions)"
   echo "    --overwrite                   Overwrite previous Hypervim configuration (a backup is always performed first)"
   echo "    --branch                      Specify a specific branch."
@@ -45,8 +37,6 @@ function usage() {
 function parse_arguments() {
   while [ "$#" -gt 0 ]; do
     case "$1" in
-      -l | --local)
-        ARGS_LOCAL=1 ;;
       --overwrite)
         ARGS_OVERWRITE=1 ;;
       -y | --yes)
@@ -91,32 +81,6 @@ function confirm() {
         ;;
     esac
   done
-}
-
-function main() {
-  parse_arguments "$@"
-
-  print_logo
-
-  msg "Detecting platform for managing any additional neovim dependencies"
-  detect_platform
-
-  check_system_deps
-
-  backup_old_config
-
-  verify_hvim_dirs
-
-  if [ "$ARGS_LOCAL" -eq 1 ]; then
-    link_local_hvim
-  else
-    clone_hvim
-  fi
-
-  setup_hvim
-
-  msg "Thank you for installing Hypervim."
-  echo "You can start it by running: $INSTALL_PREFIX/bin/hvim"
 }
 
 function detect_platform() {
@@ -174,18 +138,8 @@ function check_neovim_min_version() {
   fi
 }
 
-# TODO: review to avoid blocking here
-function validate_hvim_files() {
-  local verify_version_cmd='if v:errmsg != "" | cquit | else | quit | endif'
-  if ! "$INSTALL_PREFIX/bin/hvim" --headless -c "$verify_version_cmd" &>/dev/null; then
-    msg "Removing old installation files"
-    rm -rf "$HYPERVIM_BASE_DIR"
-    clone_hvim
-  fi
-}
-
 function check_system_deps() {
-    local deps_list=("curl" "git" "npm" "make" "cc" "fzf")
+    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf")
 
     for dep in "${deps_list[@]}"; do
         if ! command -v "$dep" &>/dev/null; then
@@ -197,12 +151,14 @@ function check_system_deps() {
 }
 
 function verify_hvim_dirs() {
+  # if overwrite flag is specified, delete existing dirs
   if [ "$ARGS_OVERWRITE" -eq 1 ]; then
     for dir in "${__hvim_dirs[@]}"; do
       [ -d "$dir" ] && rm -rf "$dir"
     done
   fi
 
+  # create dir for config if they don't exist
   for dir in "${__hvim_dirs[@]}"; do
     mkdir -p "$dir"
   done
@@ -238,36 +194,18 @@ function backup_old_config() {
 function clone_hvim() {
   msg "Cloning Hypervim configuration"
 
-  if [[ -d "$XDG_DATA_HOME/Hypervim/hvim" ]]; then
-    cp -r "$XDG_DATA_HOME/Hypervim/hvim" "$XDG_DATA_HOME/Hypervim/hvim.back"
-  fi
-
   if [[ -d "$HYPERVIM_BASE_DIR" ]]; then
     if confirm "$HYPERVIM_BASE_DIR already exists. Do you want to remove it by doing another git clone?"; then
+      echo "Removing existing ${HYPERVIM_BASE_DIR} directory."
+      rm -rf "$HYPERVIM_BASE_DIR"
       if ! git clone --branch "$HV_BRANCH" "https://github.com/$HV_REMOTE" "$HYPERVIM_BASE_DIR"; then
         echo "Failed to clone repository. Installation failed."
         exit 1
       fi
     fi
   else
-    if ! git clone --branch "$HV_BRANCH" "https://github.com/$HV_REMOTE" "$HYPERVIM_BASE_DIR"; then
-      echo "Failed to clone repository. Installation failed."
-      exit 1
-    fi
+    exit 1
   fi
-}
-
-function link_local_hvim() {
-  echo "Linking local Hypervim repo"
-
-  # Detect whether it's a symlink or a folder
-  if [ -d "$HYPERVIM_BASE_DIR" ]; then
-    echo "Removing old installation files"
-    rm -rf "$HYPERVIM_BASE_DIR"
-  fi
-
-  echo "   - $BASEDIR -> $HYPERVIM_BASE_DIR"
-  ln -s -f "$BASEDIR" "$HYPERVIM_BASE_DIR"
 }
 
 function create_executable() {
@@ -280,11 +218,14 @@ function create_executable() {
 cat <<EOF >"$dst"
 #!/bin/sh
 
-export HYPERVIM_RUNTIME_DIR="${HYPERVIM_RUNTIME_DIR:-"$XDG_DATA_HOME/hypervim"}"
 export HYPERVIM_CONFIG_DIR="${HYPERVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/hvim"}"
 export HYPERVIM_CACHE_DIR="${HYPERVIM_CACHE_DIR:-"$XDG_CACHE_HOME/hvim"}"
 
-exec nvim -u "$HYPERVIM_RUNTIME_DIR/hvim/init.lua" "$@"
+if [ -z "\$@" ]; then
+  exec nvim -u "$HYPERVIM_CONFIG_DIR/init.lua"
+else
+  exec nvim -u "$HYPERVIM_CONFIG_DIR/init.lua" "\$@"
+fi
 EOF
 
   chmod +x "$dst"
@@ -303,21 +244,6 @@ function remove_old_cache_files() {
   fi
 }
 
-function setup_hvim() {
-  remove_old_cache_files
-
-  msg "Creating Hypervim executable"
-
-  create_executable
-
-  msg "Preparing Packer setup"
-
-  "$INSTALL_PREFIX/bin/hvim" --headless \
-    -c 'autocmd User PackerComplete quitall'
-
-  echo "Packer setup complete"
-}
-
 function print_logo() {
   cat <<'EOF'
 
@@ -333,6 +259,42 @@ function print_logo() {
   ⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃
 
 EOF
+}
+
+function setup_hvim() {
+  remove_old_cache_files
+
+  msg "Creating Hypervim executable"
+  create_executable
+
+  msg "Installing packer and sync plugins"
+  "$INSTALL_PREFIX/bin/hvim" --headless \
+    -c 'autocmd User PackerComplete quitall' \
+    -c 'PackerSync'
+
+  echo "Hypervim setup complete"
+}
+
+function main() {
+  parse_arguments "$@"
+
+  print_logo
+
+  detect_platform
+
+  check_system_deps
+
+  backup_old_config
+
+  verify_hvim_dirs
+
+  clone_hvim
+
+  setup_hvim
+
+  msg "Thank you for installing Hypervim."
+  echo "You can start it by running: hvim"
+  echo "[make sure $INSTALL_PREFIX/bin is in \$PATH]"
 }
 
 main "$@"
