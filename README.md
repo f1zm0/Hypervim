@@ -73,15 +73,18 @@ The following tools are required:
 
 ### Installation
 
-```sh
-# backup current config [optional, but recommended]
-mv ~/.config/nvim{,.bak}
+Install Hypervim configuration with:
 
-# clone Hypervim config into default config path
-git clone https://github.com/f1zm0/Hypervim ~/.config/nvim
+```sh
+git clone https://github.com/f1zm0/Hypervim && cd Hypervim
+./setup.sh
 ```
 
-When you first open Neovim, it will install the required plugins and Treesitter parsers. This process may take a few minutes.
+This process may take a few minutes. The setup script will take care of:
+
+- cloning the config to `~/.config/hvim` (so that your current neovim config is not overwritten)
+- installing Packer and the required plugins.
+- Creating a `hvim` launcher so you can run `hvim` for `Hypervim`, and keep `nvim` command for Neovim with standard or current config
 
 > IMPORTANT NOTE: Hypervim is alpha software. I'll do my best to keep the main branch as stable as possible and the documentation up-to-date, but this may not always be guaranteed at this stage.
 

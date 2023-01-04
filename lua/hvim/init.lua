@@ -26,11 +26,12 @@ for _, p in pairs(require('hvim.defaults').disabled_built_ins) do
 end
 
 -- setup components
-require('impatient')
+local _, impatient = pcall(require, 'impatient')
+
 require('hvim.packer')
+require('hvim.plugins')
 require('hvim.hacks')
 require('hvim.ui')
-require('hvim.plugins')
 
 -- run startup tasks if enabled
 if require('hvim.defaults').startup_tasks.check_hvim_updates then

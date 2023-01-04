@@ -5,7 +5,6 @@ local conf_ok, cs_conf = pcall(require, 'hvim.ui.colorschemes.' .. cs.name)
 if conf_ok then
   local status_ok, colorscheme = pcall(require, cs.name)
   if not status_ok then
-    print(cs.name .. ' colorscheme not installed. Please install it first.')
     return
   end
   -- calling setup with custom config

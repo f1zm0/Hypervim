@@ -9,6 +9,7 @@ M.core = {
     nowb = true,
   },
   options = {
+    termguicolors = true,
     ignorecase = false,
     hlsearch = true,
     ruler = false,
@@ -56,9 +57,6 @@ M.core = {
       -- Move current line up/down
       ['<A-j>'] = ":m '>+1<CR>gv-gv",
       ['<A-k>'] = ":m '<-2<CR>gv-gv",
-
-      -- open config entrypoint
-      ['<leader>rc'] = '<cmd>e ' .. os.getenv('MYVIMRC') .. '<cr>',
 
       -- packer sync and clean plugins
       ['<leader>ps'] = '<cmd>PackerSync<cr>',
