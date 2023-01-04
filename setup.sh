@@ -221,7 +221,7 @@ cat <<EOF >"$dst"
 export HYPERVIM_CONFIG_DIR="${HYPERVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/hvim"}"
 export HYPERVIM_CACHE_DIR="${HYPERVIM_CACHE_DIR:-"$XDG_CACHE_HOME/hvim"}"
 
-if [ -z "\$@" ]; then
+if [ \$# -eq 0 ]; then
   exec nvim -u "$HYPERVIM_CONFIG_DIR/init.lua"
 else
   exec nvim -u "$HYPERVIM_CONFIG_DIR/init.lua" "\$@"
