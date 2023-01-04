@@ -2,7 +2,6 @@
 require('hvim.plugins.treesitter')
 require('hvim.plugins.cmp')
 require('hvim.plugins.lsp')
-require('hvim.plugins.sessions')
 
 -- load and setup optional plugins
 local plugins_defaults = require('hvim.defaults').plugins
@@ -28,7 +27,7 @@ for plugin_name, plugin_config in pairs(plugins_defaults) do
         end
       end
     end
-  else
-    print('Error loading plugin ' .. plugin_name)
   end
 end
+
+require('hvim.plugins.sessions')
