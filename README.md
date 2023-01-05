@@ -13,7 +13,7 @@
 </a>
 <br/>
 <a href="https://github.com/f1zm0/Hypervim/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues/f1zm0/Hypervim?style=for-the-badge&logo=dependabot&color=ff757f&logoColor=d9e0ee&labelColor=2b2c33" style="max-width: 100%;">
+    <img alt="Issues" src="https://img.shields.io/github/issues/f1zm0/Hypervim?style=for-the-badge&logo=dependabot&color=6a8c9f&logoColor=d9e0ee&labelColor=2b2c33" style="max-width: 100%;">
   </a>
 <a href="#"> <img src="https://img.shields.io/badge/Status-Alpha-01a6b6?style=for-the-badge&labelColor=2b2c33&logo=curl" alt="project status"> </a>
 </p>
@@ -65,7 +65,7 @@
 The following tools are required:
 
 - `nvim` (v0.7.0+)
-- `node` (< v18.x.x if you use copilot) and `npm`
+- `node` (< v18.x.x if you use copilot), `npm`, `yarn`
 - `curl`
 - `ripgrep`
 - `gcc` or `clang`
@@ -97,14 +97,14 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Basic Keymaps</code> 🗺️</summary>
 <p>
 
-| Function                  | Keymap       |
-| ------------------------- | ------------ |
-| Close everything and exit | `<leader>q`  |
-| Sync packages             | `<leader>ps` |
-| Delete buffer             | `<leader>d`  |
-| Close window              | `<leader>c`  |
-| Expand window             | `<leader>z`  |
-| Open file explorer        | `<leader>e`  |
+| Function                  | Keymap                                     |
+| ------------------------- | ------------------------------------------ |
+| Close everything and exit | <kbd>leader</kbd><kbd>q</kbd>              |
+| Sync packages             | <kbd>leader></kbd><kbd>p</kbd><kbd>s</kbd> |
+| Delete buffer             | <kbd>leader></kbd><kbd>d</kbd>             |
+| Close window              | <kbd>leader></kbd><kbd>c</kbd>             |
+| Expand window             | <kbd>leader></kbd><kbd>z</kbd>             |
+| Open file explorer        | <kbd>leader></kbd><kbd>e</kbd>             |
 
 </p>
 </details>
@@ -112,16 +112,16 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Navigation</code> 🧭</summary>
 <p>
 
-| Function                  | Keymap      |
-| ------------------------- | ----------- |
-| Navigate to left window   | `Ctrl+h`    |
-| Navigate to right window  | `Ctrl+l`    |
-| Navigate to top window    | `Ctrl+k`    |
-| Navigate to bottom window | `Ctrl+j`    |
-| Horizontal split          | `\`         |
-| Vertical split            | `\|`        |
-| Next buffer               | `Tab`       |
-| Previous buffer           | `Shift+Tab` |
+| Function                  | Keymap                         |
+| ------------------------- | ------------------------------ |
+| Navigate to left window   | <kbd>Ctrl</kbd><kbd>h</kbd>    |
+| Navigate to right window  | <kbd>Ctrl</kbd><kbd>l</kbd>    |
+| Navigate to top window    | <kbd>Ctrl</kbd><kbd>k</kbd>    |
+| Navigate to bottom window | <kbd>Ctrl</kbd><kbd>j</kbd>    |
+| Horizontal split          | <kbd>\\</kbd>                  |
+| Vertical split            | <kbd>\|</kbd>                  |
+| Next buffer               | <kbd>Tab</kbd>                 |
+| Previous buffer           | <kbd>Shift</kbd><kbd>Tab</kbd> |
 
 </p>
 </details>
@@ -129,14 +129,14 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Telescope </code> 🔭 </summary>
 <p>
 
-| Function                | Keymap          |
-| ----------------------- | --------------- |
-| Find files (fzf syntax) | `<Leader>ff`    |
-| Find buffers            | `<Leader>fb`    |
-| Find notifications      | `<Leader>fn`    |
-| Find with ripgrep       | `<Leader>fg`    |
-| Next result             | `Ctrl+n` or `↓` |
-| Previous result         | `Ctrl+p` or `↑` |
+| Function                | Keymap                                    |
+| ----------------------- | ----------------------------------------- |
+| Find files (fzf syntax) | <kbd>leader</kbd><kbd>f</kbd><kbd>f</kbd> |
+| Find buffers            | <kbd>leader</kbd><kbd>f</kbd><kbd>b</kbd> |
+| Find notifications      | <kbd>leader</kbd><kbd>f</kbd><kbd>n</kbd> |
+| Find with ripgrep       | <kbd>leader</kbd><kbd>f</kbd><kbd>g</kbd> |
+| Next result             | <kbd>Ctrl</kbd><kbd>n</kbd>               |
+| Previous result         | <kbd>Ctrl</kbd><kbd>p</kbd>               |
 
 </p>
 </details>
@@ -144,12 +144,12 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Completion</code> ✨</summary>
 <p>
 
-| Function             | Keymap          |
-| -------------------- | --------------- |
-| Open completion menu | `Ctrl+Space`    |
-| Next suggestion      | `Ctrl+n` or `↓` |
-| Previous suggestion  | `Ctrl+p` or `↑` |
-| Accept suggestion    | `Enter`         |
+| Function             | Keymap                          |
+| -------------------- | ------------------------------- |
+| Open completion menu | <kbd>Ctrl</kbd><kbd>Space</kbd> |
+| Next suggestion      | <kbd>Ctrl</kbd><kbd>n</kbd>     |
+| Previous suggestion  | <kbd>Ctrl</kbd><kbd>p</kbd>     |
+| Accept suggestion    | <kbd>Enter</kbd>                |
 
 </p>
 </details>
@@ -157,13 +157,13 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>LSP</code> ⚙️</summary>
 <p>
 
-| Function                     | Keymap       |
-| ---------------------------- | ------------ |
-| Go to definition             | `gd`         |
-| Go to declaration            | `gD`         |
-| Show references              | `gr`         |
-| Rename hovered item          | `<leader>rn` |
-| Show info about hovered item | `K`          |
+| Function                     | Keymap                           |
+| ---------------------------- | -------------------------------- |
+| Go to definition             | <kbd>g</kbd><kbd>d</kbd>         |
+| Go to declaration            | <kbd>g</kbd><kbd>D</kbd>         |
+| Show references              | <kbd>g</kbd><kbd>r</kbd>         |
+| Rename hovered item          | <kbd><leader>r</kbd><kbd>n</kbd> |
+| Show info about hovered item | <kbd>K</kbd>                     |
 
 </p>
 </details>
@@ -171,13 +171,13 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Diagnostics</code> 🩺</summary>
 <p>
 
-| Function                                 | Keymap       |
-| ---------------------------------------- | ------------ |
-| Toggle (trouble) diagnostics panel       | `<leader>tt` |
-| Show error or warning at hovered line    | `T`          |
-| Toggle preview of hovered trouble item   | `P`          |
-| Open hovered trouble item in a new split | `Ctrl + x`   |
-| Open hovered trouble item in a new tab   | `Ctrl + t`   |
+| Function                                 | Keymap                                    |
+| ---------------------------------------- | ----------------------------------------- |
+| Toggle (trouble) diagnostics panel       | <kbd>leader</kbd><kbd>t</kbd><kbd>t</kbd> |
+| Show error or warning at hovered line    | <kbd>T</kbd>                              |
+| Toggle preview of hovered trouble item   | <kbd>P</kbd>                              |
+| Open hovered trouble item in a new split | <kbd>Ctrl</kbd><kbd>x</kbd>               |
+| Open hovered trouble item in a new tab   | <kbd>Ctrl</kbd><kbd>t</kbd>               |
 
 </p>
 </details>
@@ -185,10 +185,10 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Markdown </code> 📜</summary>
 <p>
 
-| Function         | Keymap       |
-| ---------------- | ------------ |
-| :MarkdownPreview | `<Leader>mp` |
-| :GenTOCGFM       | `<Leader>mt` |
+| Function         | Keymap                                    |
+| ---------------- | ----------------------------------------- |
+| :MarkdownPreview | <kbd>leader</kbd><kbd>m</kbd><kbd>p</kbd> |
+| :GenTOCGFM       | <kbd>leader</kbd><kbd>m</kbd><kbd>t</kbd> |
 
 </p>
 </details>
@@ -198,6 +198,14 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 When you want to start using Copiot, you first need to run `:Copilot auth` command, and complete the authentication process.
 
 For more info refer to the [plugin documentation](https://github.com/zbirenbaum/copilot.lua)
+
+## 🛠️ Troubleshooting
+
+### Markdown-Preview dependencies
+
+If you run `:MarkdownPreview` and get an error message saying that `tslib` is not installed, you may need to install its dependencies manually, by going into `~/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim` and running `yarn install`.
+
+The issue is tracked here: [iamcco/markdown-preview/issues/188](https://github.com/iamcco/markdown-preview.nvim/issues/188)
 
 ## 🤝 Contributing
 
