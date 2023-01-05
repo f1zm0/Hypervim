@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local signs_icons = require('hvim.ui.icons').diagnostics
+
 local sumneko_lua_settings = {
   settings = {
     Lua = {
@@ -107,4 +109,14 @@ for srv_name, srv_opts in pairs(servers) do
 
   -- setup
   nvim_lsp[srv_name].setup(lsp_opts)
+end
+
+-- customize diagnostics icons
+for type, icon in pairs(signs_icons) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, {
+    text = icon,
+    texthl = hl,
+    numhl = '',
+  })
 end
