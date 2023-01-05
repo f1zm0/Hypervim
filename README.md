@@ -16,6 +16,9 @@
     <img alt="Issues" src="https://img.shields.io/github/issues/f1zm0/Hypervim?style=for-the-badge&logo=dependabot&color=6a8c9f&logoColor=d9e0ee&labelColor=2b2c33" style="max-width: 100%;">
   </a>
 <a href="#"> <img src="https://img.shields.io/badge/Status-Alpha-01a6b6?style=for-the-badge&labelColor=2b2c33&logo=curl" alt="project status"> </a>
+    <a href="https://twitter.com/intent/follow?screen_name=f1zm0">
+      <img alt="follow on Twitter" src="https://img.shields.io/twitter/follow/f1zm0?style=for-the-badge&logo=twitter&color=8aadf3&logoColor=d9e0ee&labelColor=2b2c33" />
+    </a>
 </p>
 
 <p align="center">
