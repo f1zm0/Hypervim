@@ -202,7 +202,7 @@ M.plugins = {
   windows = {
     keymaps = {
       normal_mode = {
-        ['<leader>z'] = '<cmd>WindowMaximize<cr>',
+        ['<leader>z'] = '<cmd>WindowsMaximize<cr>',
       },
     },
   },
