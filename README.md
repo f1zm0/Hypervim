@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/f1zm0/Hypervim/releases">
-    <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.7.0+-5d85ef.svg?style=for-the-badge&labelColor=2b2c33&logo=Neovim&logoColor=white" style="max-width: 100%;">
+    <img alt="Neovim Minimum Version" src="https://img.shields.io/badge/Neovim-0.8.0+-5d85ef.svg?style=for-the-badge&labelColor=2b2c33&logo=Neovim&logoColor=white" style="max-width: 100%;">
 </a>
   <a href="https://github.com/f1zm0/Hypervim/commits/master">
     <img src="https://img.shields.io/github/last-commit/f1zm0/Hypervim?style=for-the-badge&logo=github&color=ccfd66&logoColor=white&labelColor=2b2c33" style="max-width: 100%;">
@@ -67,12 +67,13 @@
 
 The following tools are required:
 
-- `nvim` (v0.7.0+)
+- `nvim` (v0.8.0+)
 - `node` (< v18.x.x if you use copilot), `npm`, `yarn`
 - `curl`
 - `ripgrep`
 - `gcc` or `clang`
 - `make`
+- `unzip`
 
 ### Installation
 

@@ -139,7 +139,7 @@ function check_neovim_min_version() {
 }
 
 function check_system_deps() {
-    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf")
+    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf" "unzip")
 
     for dep in "${deps_list[@]}"; do
         if ! command -v "$dep" &>/dev/null; then
