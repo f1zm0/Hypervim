@@ -14,6 +14,8 @@ declare -r HYPERVIM_BASE_DIR="$XDG_CONFIG_HOME/hvim"
 
 declare -r INSTALL_PREFIX="$HOME/.local"
 
+declare NEOVIM_MIN_VERSION=0.8
+
 declare ARGS_OVERWRITE=0
 declare ARGS_INSTALL_DEPENDENCIES=1
 declare INTERACTIVE_MODE=1
@@ -129,11 +131,11 @@ function print_missing_dep_msg() {
 }
 
 function check_neovim_min_version() {
-  local verify_version_cmd='if !has("nvim-0.7") | cquit | else | quit | endif'
+  local verify_version_cmd="if !has(\"nvim-${NEOVIM_MIN_VERSION}\") | cquit | else | quit | endif"
 
   # exit with an error if min_version not found
   if ! nvim --headless -u NONE -c "$verify_version_cmd"; then
-    echo "[ERROR]: Hypervim requires at least Neovim v0.7 or higher"
+    echo "[ERROR]: Hypervim requires at least Neovim v${NEOVIM_MIN_VERSION} or higher"
     exit 1
   fi
 }
