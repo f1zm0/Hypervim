@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  indent = { enable = true, disable = { 'yaml', 'python' } },
 
   -- disable highlighting for huge files
   disable = function(_, buf)
