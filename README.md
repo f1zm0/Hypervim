@@ -104,11 +104,11 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 | Function                  | Keymap                                     |
 | ------------------------- | ------------------------------------------ |
 | Close everything and exit | <kbd>leader</kbd><kbd>q</kbd>              |
-| Sync packages             | <kbd>leader></kbd><kbd>p</kbd><kbd>s</kbd> |
-| Delete buffer             | <kbd>leader></kbd><kbd>d</kbd>             |
-| Close window              | <kbd>leader></kbd><kbd>c</kbd>             |
-| Expand window             | <kbd>leader></kbd><kbd>z</kbd>             |
-| Open file explorer        | <kbd>leader></kbd><kbd>e</kbd>             |
+| Sync packages             | <kbd>leader</kbd><kbd>p</kbd><kbd>s</kbd> |
+| Delete buffer             | <kbd>leader</kbd><kbd>d</kbd>             |
+| Close window              | <kbd>leader</kbd><kbd>c</kbd>             |
+| Expand window             | <kbd>leader</kbd><kbd>z</kbd>             |
+| Open file explorer        | <kbd>leader</kbd><kbd>e</kbd>             |
 
 </p>
 </details>
