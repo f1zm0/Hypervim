@@ -1,41 +1,22 @@
 local M = {}
 
+local defaults = require('hvim.defaults').copilot
+
 -- setup function
 M.options = {
   panel = {
     enabled = true,
     auto_refresh = false,
-    keymap = {
-      jump_prev = '[[',
-      jump_next = ']]',
-      accept = '<CR>',
-      refresh = 'gr',
-      open = '<M-CR>',
-    },
+    keymap = defaults.panel_suggestions_keymaps,
   },
   suggestion = {
     enabled = true,
-    auto_trigger = false,
+    auto_trigger = defaults.mode == 'default',
     debounce = 75,
-    keymap = {
-      accept = '<M-l>',
-      next = '<M-]>',
-      prev = '<M-[>',
-      dismiss = '<C-]>',
-    },
+    keymap = defaults.inline_suggestions_keymaps,
   },
-  filetypes = {
-    yaml = false,
-    markdown = true,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ['.'] = false,
-  },
-  copilot_node_command = 'node', -- Node version must be < 18
+  filetypes = defaults.filetypes,
+  copilot_node_command = 'node',
   server_opts_overrides = {},
 }
 

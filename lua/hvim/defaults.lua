@@ -223,6 +223,32 @@ M.markdown_preview = {
 
 M.copilot = {
   enabled = true,
+  mode = 'default', -- or 'cmp', to use copilot as cmp source
+  auto_trigger = true,
+  inline_suggestions_keymaps = {
+    accept = '<Tab>',
+    next = '<M-]>',
+    prev = '<M-[>',
+    dismiss = '<C-]>',
+  },
+  panel_suggestions_keymaps = {
+    jump_prev = '[[',
+    jump_next = ']]',
+    accept = '<CR>',
+    refresh = 'gr',
+    open = '<C-CR>',
+  },
+  filetypes = {
+    yaml = false,
+    markdown = true,
+    help = false,
+    gitcommit = false,
+    gitrebase = false,
+    hgcommit = false,
+    svn = false,
+    cvs = false,
+    ['.'] = false,
+  },
 }
 
 -- UI preferences
