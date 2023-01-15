@@ -140,6 +140,16 @@ function check_neovim_min_version() {
   fi
 }
 
+function check_nodejs_version() {
+  local node_major_version
+  node_major_version=$(node --version | cut -d. -f1 | sed 's/v//')
+  if [ "$node_major_version" -ge 18 ]; then
+    echo "[WARNING]: Copilot requires NodeJS version < 18"
+    echo "Please downgrade NodeJS to a version < 18, if you intend to use Copilot"
+    exit 1
+  fi
+}
+
 function check_system_deps() {
     local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf" "unzip")
 
@@ -285,6 +295,8 @@ function main() {
   detect_platform
 
   check_system_deps
+
+  check_nodejs_version
 
   backup_old_config
 
