@@ -80,14 +80,13 @@ The following tools are required:
 Install Hypervim configuration with:
 
 ```sh
-git clone https://github.com/f1zm0/Hypervim && cd Hypervim
-./setup.sh
+bash <(curl -s https://raw.githubusercontent.com/f1zm0/Hypervim/setup.sh)
 ```
 
 This process may take a few minutes. The setup script will take care of:
 
 - cloning the config to `~/.config/hvim` (so that your current neovim config is not overwritten)
-- installing Packer and the required plugins.
+- installing Packer and the required plugins
 - Creating a `hvim` launcher so you can run `hvim` for `Hypervim`, and keep `nvim` command for Neovim with standard or current config
 
 > IMPORTANT NOTE: Hypervim is alpha software. I'll do my best to keep the main branch as stable as possible and the documentation up-to-date, but this may not always be guaranteed at this stage.
@@ -101,9 +100,9 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>Basic Keymaps</code> 🗺️</summary>
 <p>
 
-| Function                  | Keymap                                     |
-| ------------------------- | ------------------------------------------ |
-| Close everything and exit | <kbd>leader</kbd><kbd>q</kbd>              |
+| Function                  | Keymap                                    |
+| ------------------------- | ----------------------------------------- |
+| Close everything and exit | <kbd>leader</kbd><kbd>q</kbd>             |
 | Sync packages             | <kbd>leader</kbd><kbd>p</kbd><kbd>s</kbd> |
 | Delete buffer             | <kbd>leader</kbd><kbd>d</kbd>             |
 | Close window              | <kbd>leader</kbd><kbd>c</kbd>             |
