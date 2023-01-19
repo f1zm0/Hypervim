@@ -14,6 +14,8 @@ declare -r HYPERVIM_BASE_DIR="$XDG_CONFIG_HOME/hvim"
 
 declare -r INSTALL_PREFIX="$HOME/.local"
 
+declare NEOVIM_MIN_VERSION=0.8
+
 declare ARGS_OVERWRITE=0
 declare ARGS_INSTALL_DEPENDENCIES=1
 declare INTERACTIVE_MODE=1
@@ -129,17 +131,28 @@ function print_missing_dep_msg() {
 }
 
 function check_neovim_min_version() {
-  local verify_version_cmd='if !has("nvim-0.7") | cquit | else | quit | endif'
+  local verify_version_cmd="if !has(\"nvim-${NEOVIM_MIN_VERSION}\") | cquit | else | quit | endif"
 
   # exit with an error if min_version not found
   if ! nvim --headless -u NONE -c "$verify_version_cmd"; then
-    echo "[ERROR]: Hypervim requires at least Neovim v0.7 or higher"
+    echo "[ERROR]: Hypervim requires at least Neovim v${NEOVIM_MIN_VERSION} or higher"
+    exit 1
+  fi
+}
+
+function check_nodejs_version() {
+  local node_major_version
+  node_major_version=$(node --version | cut -d. -f1 | sed 's/v//')
+  echo "Detected node version: $node_major_version"
+  if [ "$node_major_version" -ge 18 ]; then
+    echo "[WARNING]: Copilot requires NodeJS version < 18"
+    echo "Please downgrade NodeJS to a version < 18, if you intend to use Copilot"
     exit 1
   fi
 }
 
 function check_system_deps() {
-    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf")
+    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf" "unzip")
 
     for dep in "${deps_list[@]}"; do
         if ! command -v "$dep" &>/dev/null; then
@@ -283,6 +296,8 @@ function main() {
   detect_platform
 
   check_system_deps
+
+  check_nodejs_version
 
   backup_old_config
 

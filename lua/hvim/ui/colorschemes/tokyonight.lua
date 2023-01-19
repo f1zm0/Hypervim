@@ -167,5 +167,8 @@ return {
       bg = colors.bg_dark,
       fg = colors.fg,
     }
+    hl.IndentBlanklineContextChar = {
+      fg = colors.fg_dark,
+    }
   end,
 }

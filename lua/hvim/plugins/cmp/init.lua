@@ -43,22 +43,7 @@ cmp.setup({
       min_height = 3,
     },
   },
-  sources = cmp.config.sources({
-    { name = 'copilot', group_index = 1 },
-    { name = 'nvim_lsp', group_index = 2 },
-    { name = 'treesitter', group_index = 2 },
-    { name = 'path', group_index = 2 },
-    { name = 'emoji', group_index = 3 },
-    { name = 'luasnip', group_index = 4 },
-    {
-      name = 'buffer',
-      option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
-      },
-    },
-  }),
+  sources = cmp.config.sources(require('hvim.plugins.cmp.sources')),
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
