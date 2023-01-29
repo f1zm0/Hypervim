@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/f1zm0/Hypervim/compare/v0.1.0...v0.2.0) (2023-01-29)
+
+
+### Features
+
+* remove tab key conflicts between cmp and copilot ([8ceee58](https://github.com/f1zm0/Hypervim/commit/8ceee58844a179b36cef15564e1fea6c558982bd))
+
+
+### Continuous Integration
+
+* add release workflow ([a289fc6](https://github.com/f1zm0/Hypervim/commit/a289fc666456af5470ee0f48ab856efcc9128ffa))
+
 ## 0.1.0 (2023-01-19)
 
 
