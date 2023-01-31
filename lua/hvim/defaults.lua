@@ -54,6 +54,10 @@ M.core = {
       ['\\'] = '<cmd>split<cr>',
       ['|'] = '<cmd>vsplit<cr>',
 
+      -- scroll up/down without loosing track of cursor
+      ['<c-u>'] = '<c-u>zz',
+      ['<c-d>'] = '<c-d>zz',
+
       -- Move current line up/down
       ['<A-j>'] = ":m '>+1<CR>gv-gv",
       ['<A-k>'] = ":m '<-2<CR>gv-gv",
@@ -78,6 +82,10 @@ M.core = {
       -- Move current line up/down
       ['<A-j>'] = ":m '>+1<CR>gv-gv",
       ['<A-k>'] = ":m '<-2<CR>gv-gv",
+
+      -- scroll up/down without loosing track of cursor
+      ['<c-u>'] = '<c-u>zz',
+      ['<c-d>'] = '<c-d>zz',
     },
     command_mode = {},
     terminal_mode = {},
