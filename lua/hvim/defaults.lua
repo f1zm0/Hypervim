@@ -241,7 +241,7 @@ M.copilot = {
     open = '<C-CR>',
   },
   filetypes = {
-    yaml = false,
+    yaml = true,
     markdown = true,
     help = false,
     gitcommit = false,
