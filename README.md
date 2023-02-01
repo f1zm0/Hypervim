@@ -80,7 +80,7 @@ The following tools are required:
 Install Hypervim configuration with:
 
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/f1zm0/Hypervim/setup.sh)
+bash <(curl -s https://raw.githubusercontent.com/f1zm0/Hypervim/main/setup.sh)
 ```
 
 This process may take a few minutes. The setup script will take care of:
@@ -89,7 +89,8 @@ This process may take a few minutes. The setup script will take care of:
 - installing Packer and the required plugins
 - Creating a `hvim` launcher so you can run `hvim` for `Hypervim`, and keep `nvim` command for Neovim with standard or current config
 
-> IMPORTANT NOTE: Hypervim is alpha software. I'll do my best to keep the main branch as stable as possible and the documentation up-to-date, but this may not always be guaranteed at this stage.
+> **Note**
+> Hypervim is alpha software. I'll do my best to keep the main branch as stable as possible and the documentation up-to-date, but this may not always be guaranteed at this stage.
 
 ## ⌨️ Keymaps
 
