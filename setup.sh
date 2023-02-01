@@ -145,9 +145,7 @@ function check_nodejs_version() {
   node_major_version=$(node --version | cut -d. -f1 | sed 's/v//')
   echo "Detected node version: $node_major_version"
   if [ "$node_major_version" -ge 18 ]; then
-    echo "[WARNING]: Copilot requires NodeJS version < 18"
-    echo "Please downgrade NodeJS to a version < 18, if you intend to use Copilot"
-    exit 1
+    echo "[WARNING]: Copilot requires NodeJS version < 18. Downgrade version if you intend to use Copilot"
   fi
 }
 
