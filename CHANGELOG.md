@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/f1zm0/Hypervim/compare/v0.2.0...v0.2.1) (2023-02-01)
+
+
+### Misc
+
+* improve docs and defaults ([#8](https://github.com/f1zm0/Hypervim/issues/8)) ([266a526](https://github.com/f1zm0/Hypervim/commit/266a5264a6609b148b0d9b0cb91641eec42e9ed8))
+
 ## [0.2.0](https://github.com/f1zm0/Hypervim/compare/v0.1.0...v0.2.0) (2023-01-29)
 
 
