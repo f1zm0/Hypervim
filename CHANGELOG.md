@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.2](https://github.com/f1zm0/Hypervim/compare/v0.2.1...v0.2.2) (2023-02-12)
+
+
+### Bug Fixes
+
+* resolve error after sumneko_lua moved to lua_ls ([7b629ed](https://github.com/f1zm0/Hypervim/commit/7b629eda5b96037dbb8201b060de9a24799b703f))
+
 ## [0.2.1](https://github.com/f1zm0/Hypervim/compare/v0.2.0...v0.2.1) (2023-02-01)
 
 
