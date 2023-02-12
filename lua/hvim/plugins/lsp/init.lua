@@ -5,7 +5,7 @@ end
 
 local signs_icons = require('hvim.ui.icons').diagnostics
 
-local sumneko_lua_settings = {
+local lua_ls_settings = {
   settings = {
     Lua = {
       runtime = {
@@ -41,7 +41,7 @@ local servers = {
   jsonls = {},
   pyright = {},
   rust_analyzer = {},
-  sumneko_lua = sumneko_lua_settings,
+  lua_ls = lua_ls_settings,
   tsserver = {},
   yamlls = {},
 }
