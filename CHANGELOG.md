@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.3](https://github.com/f1zm0/Hypervim/compare/v0.2.2...v0.2.3) (2023-03-06)
+
+
+### Bug Fixes
+
+* add install dir check in setup script ([7c8e234](https://github.com/f1zm0/Hypervim/commit/7c8e234b7fee43e9c3edd50c8cb4d3b280dcac50))
+* add missing rustfmt formatter in null-ls config ([f09e1f8](https://github.com/f1zm0/Hypervim/commit/f09e1f84fa64d97cc703f4d6ff377f098eb5373c))
+
 ## [0.2.2](https://github.com/f1zm0/Hypervim/compare/v0.2.1...v0.2.2) (2023-02-12)
 
 
