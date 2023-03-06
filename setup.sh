@@ -222,11 +222,15 @@ function clone_hvim() {
 function create_executable() {
   local dst="$INSTALL_PREFIX/bin/hvim"
 
+  if [[ ! -d "$INSTALL_PREFIX/bin" ]]; then
+    mkdir -p "$INSTALL_PREFIX/bin"
+  fi
+
   if [[ -f $dst ]]; then
     rm -rf "$dst"
   fi
 
-cat <<EOF >"$dst"
+  cat <<EOF >"$dst"
 #!/bin/sh
 
 export HYPERVIM_CONFIG_DIR="${HYPERVIM_CONFIG_DIR:-"$XDG_CONFIG_HOME/hvim"}"

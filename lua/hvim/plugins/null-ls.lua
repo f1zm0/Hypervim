@@ -40,6 +40,7 @@ local formatters = {
   formatting.gofumpt,
   formatting.goimports,
   formatting.golines,
+  formatting.rustfmt,
   diagnostics.vale,
 }
 
