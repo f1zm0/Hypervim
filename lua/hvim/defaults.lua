@@ -68,9 +68,6 @@ M.core = {
 
       -- show diagnostics info for hovered item in a float pane
       ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
-
-      -- open trouble pane with diagnostics and quickfixes
-      ['<leader>tt'] = '<cmd>TroubleToggle<cr>',
     },
     insert_mode = {},
     visual_mode = {
