@@ -58,4 +58,8 @@ M.git = {
   ignored = '◌',
 }
 
+M.dap = {
+  DapBreakpoint = '',
+}
+
 return M

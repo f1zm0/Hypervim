@@ -83,6 +83,12 @@ packer.startup(function(use)
   use('saadparwaiz1/cmp_luasnip')
   use('rafamadriz/friendly-snippets')
 
+  -- Debugging
+  use('mfussenegger/nvim-dap')
+  use('rcarriga/nvim-dap-ui')
+  use('leoluz/nvim-dap-go')
+  use('theHamsta/nvim-dap-virtual-text')
+
   -- UI
   use({ 'akinsho/bufferline.nvim', tag = 'v2.*' })
   use({ 'nvim-lualine/lualine.nvim' })

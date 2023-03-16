@@ -35,7 +35,7 @@ M.core = {
       -- buffer navigation and management
       ['<Tab>'] = '<cmd>bnext<cr>',
       ['<S-Tab>'] = '<cmd>bprev<cr>',
-      ['<leader>d'] = '<cmd>bp | bd #<cr>',
+      ['<leader>x'] = '<cmd>bp | bd #<cr>',
       ['<leader>c'] = '<C-w>c',
 
       -- window navigation
@@ -68,6 +68,19 @@ M.core = {
 
       -- show diagnostics info for hovered item in a float pane
       ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
+
+      -- dap
+      ['<F5>'] = "<cmd>lua require'dap'.continue()<cr>",
+      ['<F10>'] = "<cmd>lua require'dap'.step_over()<cr>",
+      ['<F11>'] = "<cmd>lua require'dap'.step_into()<cr>",
+      ['<F12>'] = "<cmd>lua require'dap'.step_out()<cr>",
+      ['<leader>b'] = "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
+      ['<leader>B'] = "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+      ['<leader>dr'] = "<cmd>lua require'dap'.repl.open()<cr>",
+      ['<leader>du'] = "<cmd>lua require'dapui'.toggle()<cr>",
+      ['<leader>do'] = "<cmd>lua require'dapui'.open()<cr>",
+      ['<leader>dc'] = "<cmd>lua require'dapui'.close()<cr>",
+      ['<leader>dt'] = '<cmd>DapVirtualTextToggle<cr>',
     },
     insert_mode = {},
     visual_mode = {
@@ -153,6 +166,9 @@ M.plugins = {
     },
   },
   colorizer = {},
+  dapui = {},
+  ['nvim-dap-virtual-text'] = {},
+  ['dap-go'] = {},
   gitsigns = {},
   fidget = {},
   indent_blankline = {},
