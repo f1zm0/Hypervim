@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.4](https://github.com/f1zm0/Hypervim/compare/v0.2.3...v0.2.4) (2023-05-01)
+
+
+### Code Refactoring
+
+* move nvim-tree mappings to on_attach func ([#15](https://github.com/f1zm0/Hypervim/issues/15)) ([67cc9d5](https://github.com/f1zm0/Hypervim/commit/67cc9d5ba9fa10ff1fc87da282d6fe9261659e7c))
+
 ## [0.2.3](https://github.com/f1zm0/Hypervim/compare/v0.2.2...v0.2.3) (2023-03-06)
 
 
