@@ -69,6 +69,7 @@ packer.startup(function(use)
 
   -- Formatting
   use('jose-elias-alvarez/null-ls.nvim')
+  use('tpope/vim-sleuth')
 
   -- Autocompletion
   use('hrsh7th/cmp-nvim-lsp')
