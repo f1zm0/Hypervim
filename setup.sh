@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -eo pipefail
 
 declare HV_BRANCH="main" # stable branch
@@ -16,37 +17,18 @@ declare -r INSTALL_PREFIX="$HOME/.local"
 
 declare NEOVIM_MIN_VERSION=0.8
 
-declare ARGS_OVERWRITE=0
-declare ARGS_INSTALL_DEPENDENCIES=1
-declare INTERACTIVE_MODE=1
-
-declare -a __hvim_dirs=(
-  "$HYPERVIM_CONFIG_DIR"
-  "$HYPERVIM_CACHE_DIR"
-)
 
 function usage() {
   echo "Usage: setup.sh [<options>]"
   echo ""
   echo "Options:"
   echo "    -h, --help                    Print this help message"
-  echo "    -y, --yes                     Disable confirmation prompts (answer yes to all questions)"
-  echo "    --overwrite                   Overwrite previous Hypervim configuration (a backup is always performed first)"
   echo "    --branch                      Specify a specific branch."
-  echo "    --[no]-install-dependencies   Whether to automatically install external dependencies (will prompt by default)"
 }
 
 function parse_arguments() {
   while [ "$#" -gt 0 ]; do
     case "$1" in
-      --overwrite)
-        ARGS_OVERWRITE=1 ;;
-      -y | --yes)
-        INTERACTIVE_MODE=0 ;;
-      --install-dependencies)
-        ARGS_INSTALL_DEPENDENCIES=1 ;;
-      --no-install-dependencies)
-        ARGS_INSTALL_DEPENDENCIES=0 ;;
       --branch)
         HV_BRANCH="$2"
         ;;
@@ -161,20 +143,6 @@ function check_system_deps() {
   check_neovim_min_version
 }
 
-function verify_hvim_dirs() {
-  # if overwrite flag is specified, delete existing dirs
-  if [ "$ARGS_OVERWRITE" -eq 1 ]; then
-    for dir in "${__hvim_dirs[@]}"; do
-      [ -d "$dir" ] && rm -rf "$dir"
-    done
-  fi
-
-  # create dir for config if they don't exist
-  for dir in "${__hvim_dirs[@]}"; do
-    mkdir -p "$dir"
-  done
-}
-
 function backup_old_config() {
   local src="$HYPERVIM_CONFIG_DIR"
   if [ ! -d "$src" ]; then
@@ -203,18 +171,20 @@ function backup_old_config() {
 }
 
 function clone_hvim() {
-  msg "Cloning Hypervim configuration"
+  msg "Cloning Hypervim configuration ..."
 
   if [[ -d "$HYPERVIM_BASE_DIR" ]]; then
     if confirm "$HYPERVIM_BASE_DIR already exists. Do you want to remove it by doing another git clone?"; then
       echo "Removing existing ${HYPERVIM_BASE_DIR} directory."
       rm -rf "$HYPERVIM_BASE_DIR"
-      if ! git clone --branch "$HV_BRANCH" "https://github.com/$HV_REMOTE" "$HYPERVIM_BASE_DIR"; then
-        echo "Failed to clone repository. Installation failed."
-        exit 1
-      fi
+    else
+      msg "Ok. Exiting."
+      exit 1
     fi
-  else
+  fi
+
+  if ! git clone --branch "$HV_BRANCH" "https://github.com/$HV_REMOTE" "$HYPERVIM_BASE_DIR"; then
+    echo "Failed to clone repository. Installation failed."
     exit 1
   fi
 }
@@ -302,8 +272,6 @@ function main() {
   check_nodejs_version
 
   backup_old_config
-
-  verify_hvim_dirs
 
   clone_hvim
 

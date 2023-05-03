@@ -74,6 +74,7 @@ The following tools are required:
 - `gcc` or `clang`
 - `make`
 - `unzip`
+- a [nerdfont](https://www.nerdfonts.com/font-downloads)
 
 ### Installation
 

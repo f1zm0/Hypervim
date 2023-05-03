@@ -71,7 +71,7 @@ local section_header_sub = {
 local section_buttons = {
   type = 'group',
   val = {
-    button('LDR fs', '缾 sessions'),
+    button('LDR fs', '缾  sessions'),
     button('LDR fr', '  recent files'),
     button('LDR fg', '  fuzzy search'),
     button('LDR ft', '  todo notes'),
