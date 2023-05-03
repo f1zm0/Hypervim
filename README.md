@@ -74,7 +74,7 @@ The following tools are required:
 - `gcc` or `clang`
 - `make`
 - `unzip`
-- a [nerdfont](https://www.nerdfonts.com/) (I recommend JetBrainsMono Nerd Font)
+- a [nerdfont](https://www.nerdfonts.com/font-downloads)
 
 ### Installation
 
