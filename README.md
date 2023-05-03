@@ -68,7 +68,7 @@
 The following tools are required:
 
 - `nvim` (v0.8.0+)
-- `node` (< v18.x.x if you use copilot), `npm`, `yarn`
+- `node`, `npm`, `yarn`
 - `curl`
 - `ripgrep`
 - `gcc` or `clang`
