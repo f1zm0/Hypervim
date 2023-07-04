@@ -65,7 +65,7 @@ packer.startup(function(use)
   use('ray-x/lsp_signature.nvim')
   use('onsails/lspkind.nvim')
   use('folke/trouble.nvim')
-  use('j-hui/fidget.nvim')
+  use({ 'j-hui/fidget.nvim', tag = 'legacy' }) -- use legacy until rewrite
 
   -- Formatting
   use('jose-elias-alvarez/null-ls.nvim')
@@ -111,7 +111,7 @@ packer.startup(function(use)
 
   -- Git integration
   use('lewis6991/gitsigns.nvim')
-  use({ 'TimUntersberger/neogit' })
+  use({ 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' })
   use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
   -- Comments
