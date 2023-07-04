@@ -10,7 +10,6 @@ return {
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = {},
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
