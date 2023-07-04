@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.5](https://github.com/f1zm0/Hypervim/compare/v0.2.4...v0.2.5) (2023-07-04)
+
+
+### Bug Fixes
+
+* remove keymap option for gitsigns ([d3012fc](https://github.com/f1zm0/Hypervim/commit/d3012fc5ae5d4bc73a05d2a64d138a74189a7a72))
+* use fidget legacy branch to avoid breaking changes ([4e47dbf](https://github.com/f1zm0/Hypervim/commit/4e47dbf502a451567ab9a9a351cb57d8f0e26f17))
+
+
+### Misc
+
+* update neogit new repo name in deps ([fba9b13](https://github.com/f1zm0/Hypervim/commit/fba9b13e8e09b579f96ae6d7c6bbbe24a0465ccf))
+
 ## [0.2.4](https://github.com/f1zm0/Hypervim/compare/v0.2.3...v0.2.4) (2023-05-01)
 
 
