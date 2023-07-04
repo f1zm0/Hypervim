@@ -111,7 +111,7 @@ packer.startup(function(use)
 
   -- Git integration
   use('lewis6991/gitsigns.nvim')
-  use({ 'TimUntersberger/neogit' })
+  use({ 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' })
   use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
   -- Comments
