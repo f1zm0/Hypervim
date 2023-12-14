@@ -1,7 +1,15 @@
+local status_neodev_ok, neodev = pcall(require, 'neodev')
+if not status_neodev_ok then
+  return
+end
+
 local status_ok, nvim_lsp = pcall(require, 'lspconfig')
 if not status_ok then
   return
 end
+
+-- setup neodev before lspconfig
+neodev.setup()
 
 local signs_icons = require('hvim.ui.icons').diagnostics
 

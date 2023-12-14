@@ -22,7 +22,6 @@ M.core = {
     smartindent = true,
     shiftwidth = 4,
     tabstop = 4,
-    clipboard = 'unnamedplus',
     pumblend = 5, -- popup bg transparency
     updatetime = 300,
   },
@@ -62,10 +61,6 @@ M.core = {
       ['<A-j>'] = ":m '>+1<CR>gv-gv",
       ['<A-k>'] = ":m '<-2<CR>gv-gv",
 
-      -- packer sync and clean plugins
-      ['<leader>ps'] = '<cmd>PackerSync<cr>',
-      ['<leader>pc'] = '<cmd>PackerClean<cr>',
-
       -- show diagnostics info for hovered item in a float pane
       ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
     },
@@ -93,15 +88,15 @@ M.lsp = {
   ensure_installed = {
     'bashls',
     'clangd',
-    'cssls',
-    'eslint',
+    -- 'cssls',
+    -- 'eslint',
     'golangci_lint_ls',
     'gopls',
     'jsonls',
     'lua_ls',
     'pyright',
     'rust_analyzer',
-    'tsserver',
+    -- 'tsserver',
     'yamlls',
   },
 }
@@ -141,7 +136,6 @@ M.sessions = {
 }
 
 M.plugins = {
-  aerial = {},
   alpha = {},
   ['nvim-autopairs'] = {},
   bufferline = {
@@ -155,9 +149,8 @@ M.plugins = {
   colorizer = {},
   gitsigns = {},
   fidget = {},
-  indent_blankline = {},
-  lsp_signature = {},
   lualine = {},
+  ibl = {},
   mason = {},
   ['mason-lspconfig'] = {},
   neogit = {},
@@ -179,12 +172,10 @@ M.plugins = {
         ['<leader>fb'] = '<cmd>Telescope buffers<cr>',
         ['<leader>fh'] = '<cmd>Telescope help_tags<cr>',
         ['<leader>fr'] = '<cmd>Telescope oldfiles<cr>',
-        ['<leader>fn'] = '<cmd>Telescope notify<cr>',
       },
     },
     extensions = {
       'fzf',
-      'notify',
     },
   },
   ['todo-comments'] = {
@@ -201,13 +192,6 @@ M.plugins = {
         ['<leader>tw'] = '<cmd>Trouble workspace_diagnostics<cr>',
         ['<leader>td'] = '<cmd>Trouble document_diagnostics<cr>',
         ['<leader>tq'] = '<cmd>Trouble quickfix<cr>',
-      },
-    },
-  },
-  windows = {
-    keymaps = {
-      normal_mode = {
-        ['<leader>z'] = '<cmd>WindowsMaximize<cr>',
       },
     },
   },
