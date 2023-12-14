@@ -1,10 +1,10 @@
-local status_ok, null_ls = pcall(require, 'null-ls')
+local status_ok, none_ls = pcall(require, 'null-ls')
 if not status_ok then
   return
 end
 
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
+local formatting = none_ls.builtins.formatting
+local diagnostics = none_ls.builtins.diagnostics
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
 end
 
 local formatters = {
-  formatting.clang_format,
+  -- formatting.clang_format,
   formatting.cmake_format,
   formatting.stylua,
   formatting.black,
@@ -44,7 +44,7 @@ local formatters = {
   diagnostics.vale,
 }
 
-null_ls.setup({
+none_ls.setup({
   sources = formatters,
   on_attach = on_attach,
 })
