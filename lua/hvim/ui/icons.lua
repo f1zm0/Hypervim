@@ -3,13 +3,13 @@ local M = {}
 M.diagnostics = {
   Error = '',
   Warn = ' ',
-  Hint = ' ',
+  Hint = ' ',
   Info = ' ',
   Other = '',
 }
 
 M.hints = {
-  prefix = ' ',
+  prefix = ' ',
 }
 
 M.completion = {
@@ -48,7 +48,7 @@ M.diff = {
 }
 
 M.git = {
-  branch = ' ',
+  branch = '',
   unstaged = '✗',
   staged = '✓',
   unmerged = '',

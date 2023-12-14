@@ -17,7 +17,7 @@ local banner = {
 }
 
 local sub_banner = {
-  ' ' .. curr_time .. ' |  ' .. hvim_version .. ' |  ' .. plugins_count .. ' plugins ',
+  ' ' .. curr_time .. ' |  ' .. hvim_version .. ' |  ' .. plugins_count .. ' plugins ',
 }
 
 local function button(sc, txt, keybind, keybind_opts)
@@ -55,7 +55,7 @@ local section_header = {
   val = banner,
   opts = {
     position = 'center',
-    hl = 'DiagnosticWarn',
+    hl = 'Hlargs',
   },
 }
 
@@ -71,8 +71,8 @@ local section_header_sub = {
 local section_buttons = {
   type = 'group',
   val = {
-    button('LDR fs', '缾  sessions'),
-    button('LDR fr', '  recent files'),
+    button('LDR fs', '󰕮  sessions'),
+    button('LDR fr', '  recent files'),
     button('LDR fg', '  fuzzy search'),
     button('LDR ft', '  todo notes'),
     button('LDR ei', '  edit config'),
