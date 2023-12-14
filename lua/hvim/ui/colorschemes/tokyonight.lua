@@ -1,7 +1,15 @@
 return {
-  style = 'neo',
+  style = 'night',
   transparent = false,
   terminal_colors = true,
+  day_brightness = 0.3,
+  hide_inactive_statusline = false,
+  dim_inactive = false,
+  lualine_bold = false,
+  sidebars = {
+    'qf',
+    'help',
+  },
   styles = {
     comments = { italic = true },
     keywords = { italic = true },
@@ -10,57 +18,79 @@ return {
     sidebars = 'dark', -- style for sidebars, see below
     floats = 'dark', -- style for floating windows
   },
-  sidebars = { 'qf', 'help' },
-  day_brightness = 0.3,
-  hide_inactive_statusline = false,
-  dim_inactive = false,
-  lualine_bold = false,
+  -- customize colors
+  on_colors = function(colors)
+    colors.bg = '#1f202b'
+    colors.bg_dark = '#1b1c24'
+    colors.fg = '#cadafe'
+    colors.green = '#82dba1'
+    colors.green1 = '#00bcd4'
+    colors.orange = '#96c5fa'
+    colors.yellow = '#bacd89'
+    colors.cyan = '#6796ff'
+    colors.blue1 = '#76acff'
+    colors.purple = '#c58efb'
+    colors.purple2 = '#3f41a5'
+    colors.teal = '#03a9f4'
+  end,
 
   on_highlights = function(hl, c)
-    local colors = require('tokyonight.colors').neo
-    local util = require('tokyonight.util')
-
     -- slightly darker background to visually separate telescope
     -- results prompt from standard background
-    local bg_alt = util.blend(colors.bg, '#000000', 0.92)
+    local bg_alt = '#19191c'
+
+    -- color for nvim-tree win separator
+    local win_sep = '#2b2c3b'
 
     hl.NvimTreeFolderIcon = {
       bg = c.none,
       fg = c.fg_dark,
     }
+    hl.NvimTreeNormal = {
+      bg = c.bg,
+      fg = c.fg,
+    }
+    hl.NvimTreeNormalNC = {
+      bg = c.bg,
+      fg = c.fg,
+    }
+    hl.NvimTreeWinSeparator = {
+      bg = c.bg,
+      fg = win_sep,
+    }
+
     -- Visual fix for statusline bottom left part
     -- that remains white for both active and inactive windows
     hl.StatusLineNC = {
-      fg = colors.bg_dark,
-      bg = colors.bg_dark,
+      fg = c.bg_dark,
     }
     -- Telescope highlights
     hl.TelescopePromptBorder = {
-      fg = colors.bg_dark,
-      bg = colors.bg_dark,
+      fg = c.bg_dark,
+      bg = c.bg_dark,
     }
     hl.TelescopePromptNormal = {
-      fg = colors.fg,
-      bg = colors.bg_dark,
+      fg = c.fg,
+      bg = c.bg_dark,
     }
     hl.TelescopePromptTitle = {
-      fg = colors.fg,
-      bg = colors.bg_highlight,
+      fg = c.fg,
+      bg = c.bg_highlight,
     }
     hl.TelescopePromptCounter = {
-      fg = colors.yellow,
-      bg = colors.bg_dark,
+      fg = c.yellow,
+      bg = c.bg_dark,
     }
     hl.TelescopePromptPrefix = {
-      fg = colors.fg_dark,
-      bg = colors.bg_dark,
+      fg = c.fg_dark,
+      bg = c.bg_dark,
     }
     hl.TelescopeResultsBorder = {
       fg = bg_alt,
       bg = bg_alt,
     }
     hl.TelescopeResultsNormal = {
-      fg = colors.fg,
+      fg = c.fg,
       bg = bg_alt,
     }
     hl.TelescopeResultsTitle = {
@@ -68,107 +98,104 @@ return {
       bg = bg_alt,
     }
     hl.TelescopePreviewBorder = {
-      fg = colors.bg_dark,
-      bg = colors.bg_dark,
+      fg = c.bg_dark,
+      bg = c.bg_dark,
     }
     hl.TelescopePreviewNormal = {
-      fg = colors.fg,
-      bg = colors.bg_dark,
+      fg = c.fg,
+      bg = c.bg_dark,
     }
     hl.TelescopePreviewTitle = {
-      fg = colors.fg,
-      bg = colors.purple2,
+      fg = c.fg,
+      bg = c.purple2,
     }
     hl.CmpItemKindColor = {
-      fg = colors.bg_dark,
-      bg = colors.yellow,
+      fg = c.bg_dark,
+      bg = c.yellow,
     }
     hl.CmpItemKindTypeParameter = {
-      bg = colors.bg_dark,
-      fg = colors.blue2,
+      bg = c.bg_dark,
+      fg = c.blue2,
     }
     hl.CmpItemKindEnum = {
-      bg = colors.bg_dark,
-      fg = colors.blue,
+      bg = c.bg_dark,
+      fg = c.blue,
     }
     hl.CmpItemKindVariable = {
-      bg = colors.bg_dark,
-      fg = colors.magenta,
+      bg = c.bg_dark,
+      fg = c.magenta,
     }
     hl.CmpItemKindInterface = {
-      bg = colors.bg_dark,
-      fg = colors.green,
+      bg = c.bg_dark,
+      fg = c.green,
     }
     hl.CmpItemKindFunction = {
-      bg = colors.bg_dark,
-      fg = colors.purple,
+      bg = c.bg_dark,
+      fg = c.purple,
     }
     hl.CmpItemKindMethod = {
-      bg = colors.bg_dark,
-      fg = colors.cyan,
+      bg = c.bg_dark,
+      fg = c.cyan,
     }
     hl.CmpItemKindConstructor = {
-      bg = colors.bg_dark,
-      fg = colors.blue3,
+      bg = c.bg_dark,
+      fg = c.blue3,
     }
     hl.CmpItemKindField = {
-      bg = colors.bg_dark,
-      fg = colors.yellow1,
+      bg = c.bg_dark,
+      fg = c.yellow1,
     }
     hl.CmpItemKindModule = {
-      bg = colors.bg_dark,
-      fg = colors.green2,
+      bg = c.bg_dark,
+      fg = c.green2,
     }
     hl.CmpItemKindMenu = {
-      bg = colors.bg_dark,
-      fg = colors.bg_dark,
+      bg = c.bg_dark,
+      fg = c.bg_dark,
     }
     hl.CmpItemKindStruct = {
-      bg = colors.bg_dark,
-      fg = colors.red,
+      bg = c.bg_dark,
+      fg = c.red,
     }
     hl.CmpItemKindCopilot = {
-      bg = colors.bg_dark,
-      fg = colors.teal,
+      bg = c.bg_dark,
+      fg = c.teal,
     }
     hl.CmpItemKindSnippet = {
-      bg = colors.bg_dark,
-      fg = colors.blue4,
+      bg = c.bg_dark,
+      fg = c.blue4,
     }
     hl.CmpItemKindClass = {
-      bg = colors.bg_dark,
-      fg = colors.yellow,
+      bg = c.bg_dark,
+      fg = c.yellow,
     }
     hl.CmpItemKindUnit = {
-      bg = colors.bg_dark,
-      fg = colors.magenta2,
+      bg = c.bg_dark,
+      fg = c.magenta2,
     }
     hl.CmpItemKindValue = {
-      bg = colors.bg_dark,
-      fg = colors.orange1,
+      bg = c.bg_dark,
+      fg = c.orange1,
     }
     hl.CmpItemKindAbbr = {
-      bg = colors.bg_dark,
-      fg = colors.yellow2,
+      bg = c.bg_dark,
+      fg = c.yellow2,
     }
     hl.CmpItemKindAbbrMatch = {
-      bg = colors.bg_dark,
-      fg = colors.yellow2,
+      bg = c.bg_dark,
+      fg = c.yellow2,
     }
     hl.CmpItemKindAbbrMatchFuzzy = {
-      bg = colors.bg_dark,
-      fg = colors.yellow2,
+      bg = c.bg_dark,
+      fg = c.yellow2,
     }
     hl.CmpItemKindKeyword = {
-      bg = colors.bg_dark,
-      fg = colors.purple,
+      bg = c.bg_dark,
+      fg = c.purple,
     }
     hl.CmpItemKindText = {
-      bg = colors.bg_dark,
-      fg = colors.fg,
-    }
-    hl.IndentBlanklineContextChar = {
-      fg = colors.fg_dark,
+      bg = c.bg_dark,
+      fg = c.fg,
     }
   end,
 }

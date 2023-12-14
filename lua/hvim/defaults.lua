@@ -262,7 +262,7 @@ M.copilot = {
 M.ui = {
   colorscheme = {
     name = 'tokyonight',
-    style = 'neo',
+    style = 'night',
   },
 }
 
