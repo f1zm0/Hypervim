@@ -20,18 +20,10 @@ require('hvim.util.keymaps').load_keymaps(require('hvim.defaults').core.keymaps)
 local diagnostics = require('hvim.defaults').diagnostics
 vim.diagnostic.config(diagnostics)
 
--- disable built-in plugins for optimization
-for _, p in pairs(require('hvim.defaults').disabled_built_ins) do
-  vim.g['loaded_' .. p] = 1
-end
-
--- setup components
-local _, impatient = pcall(require, 'impatient')
-
-require('hvim.packer')
+require('hvim.lazy')
+require('hvim.ui')
 require('hvim.plugins')
 require('hvim.hacks')
-require('hvim.ui')
 
 -- run startup tasks if enabled
 if require('hvim.defaults').startup_tasks.check_hvim_updates then
