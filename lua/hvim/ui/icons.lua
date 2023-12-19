@@ -48,7 +48,7 @@ M.diff = {
 }
 
 M.git = {
-  branch = '',
+  branch = '',
   unstaged = '✗',
   staged = '✓',
   unmerged = '',
