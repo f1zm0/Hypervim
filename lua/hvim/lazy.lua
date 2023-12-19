@@ -73,7 +73,10 @@ require('lazy').setup({
     'onsails/lspkind.nvim',
     event = 'InsertEnter',
   },
-
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
+  },
   {
     'windwp/nvim-autopairs',
     event = { 'InsertEnter' },
