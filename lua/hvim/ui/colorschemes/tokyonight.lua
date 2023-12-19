@@ -4,7 +4,7 @@ return {
   terminal_colors = true,
   day_brightness = 0.3,
   hide_inactive_statusline = false,
-  dim_inactive = false,
+  dim_inactive = true,
   lualine_bold = false,
   sidebars = {
     'qf',
@@ -15,7 +15,7 @@ return {
     keywords = { italic = true },
     functions = {},
     variables = {},
-    sidebars = 'dark', -- style for sidebars, see below
+    sidebars = 'dark', -- style for sidebars
     floats = 'dark', -- style for floating windows
   },
   -- customize colors
