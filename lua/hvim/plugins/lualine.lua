@@ -2,40 +2,6 @@ local colors = require('tokyonight.colors').night
 local icons = require('hvim.ui.icons')
 local pu = require('hvim.util.path')
 
--- variation of original tokyonight's lualine theme
--- local neotokyo = {
---   normal = {
---     a = { bg = colors.blue, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---     c = { bg = colors.bg, fg = colors.fg_sidebar },
---   },
---   insert = {
---     a = { bg = colors.green1, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---   },
---   command = {
---     a = { bg = colors.red, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---   },
---   visual = {
---     a = { bg = colors.magenta, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---   },
---   replace = {
---     a = { bg = colors.red, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---   },
---   terminal = {
---     a = { bg = colors.yellow1, fg = colors.black },
---     b = { bg = colors.bg_highlight, fg = colors.fg_dark },
---   },
---   inactive = {
---     a = { bg = colors.bg, fg = colors.blue },
---     b = { bg = colors.bg, fg = colors.fg_gutter, gui = 'bold' },
---     c = { bg = colors.bg, fg = colors.fg_gutter },
---   },
--- }
-
 local custom_sections = {
   mode = {
     'mode',
@@ -66,18 +32,6 @@ local custom_sections = {
       end
     end,
   },
-  branch_icon = {
-    function()
-      return icons.git.branch
-    end,
-    padding = { left = 2, right = 0 },
-    color = { fg = colors.red2 },
-  },
-  branch = {
-    'branch',
-    padding = { left = 0, right = 1 },
-    icon = '',
-  },
 }
 
 return {
@@ -96,7 +50,7 @@ return {
   sections = {
     lualine_a = { custom_sections.mode },
     lualine_b = { custom_sections.fname },
-    lualine_c = { custom_sections.branch_icon, custom_sections.branch, custom_sections.diff },
+    lualine_c = { custom_sections.diff },
     lualine_x = { 'diagnostics', 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'location' },
     lualine_z = { 'progress' },
