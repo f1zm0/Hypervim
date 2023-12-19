@@ -47,6 +47,7 @@ local servers = {
   golangci_lint_ls = {},
   gopls = {},
   jsonls = {},
+  intelephense = {},
   pyright = {},
   rust_analyzer = {},
   lua_ls = lua_ls_settings,
