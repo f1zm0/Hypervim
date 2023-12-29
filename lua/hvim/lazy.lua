@@ -141,13 +141,16 @@ require('lazy').setup({
   },
   {
     'NeogitOrg/neogit',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    lazy = true,
+    event = 'VeryLazy',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+    },
   },
   {
     'sindrets/diffview.nvim',
+    event = 'VeryLazy',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    lazy = true,
   },
 
   -- Comments
