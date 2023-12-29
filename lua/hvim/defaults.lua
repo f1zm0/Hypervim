@@ -24,6 +24,9 @@ M.core = {
     tabstop = 4,
     pumblend = 5, -- popup bg transparency
     updatetime = 300,
+    foldmethod = 'expr',
+    foldexpr = 'nvim_treesitter#foldexpr()',
+    foldlevel = 99,
   },
   keymaps = {
     normal_mode = {
