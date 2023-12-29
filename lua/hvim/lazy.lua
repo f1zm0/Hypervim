@@ -117,6 +117,10 @@ require('lazy').setup({
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
   },
+  {
+    'declancm/maximize.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+  },
 
   -- Sessions
   'rmagatti/auto-session',

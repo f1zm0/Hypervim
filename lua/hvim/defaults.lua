@@ -153,6 +153,7 @@ M.plugins = {
   ibl = {},
   mason = {},
   ['mason-lspconfig'] = {},
+  maximize = {},
   neogit = {},
   ['null-ls'] = {},
   ['nvim-tree'] = {
