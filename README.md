@@ -162,13 +162,13 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 <details><summary><code>LSP</code> ⚙️</summary>
 <p>
 
-| Function                     | Keymap                           |
-| ---------------------------- | -------------------------------- |
-| Go to definition             | <kbd>g</kbd><kbd>d</kbd>         |
-| Go to declaration            | <kbd>g</kbd><kbd>D</kbd>         |
-| Show references              | <kbd>g</kbd><kbd>r</kbd>         |
-| Rename hovered item          | <kbd><leader>r</kbd><kbd>n</kbd> |
-| Show info about hovered item | <kbd>K</kbd>                     |
+| Function                     | Keymap                   |
+| ---------------------------- | ------------------------ |
+| Go to definition             | <kbd>g</kbd><kbd>d</kbd> |
+| Go to declaration            | <kbd>g</kbd><kbd>D</kbd> |
+| Show references              | <kbd>g</kbd><kbd>r</kbd> |
+| Rename hovered item          | <kbd>F2</kbd>            |
+| Show info about hovered item | <kbd>K</kbd>             |
 
 </p>
 </details>
@@ -179,10 +179,9 @@ Below are some of the most important keymaps. For a more comprehensive list of c
 | Function                                 | Keymap                                    |
 | ---------------------------------------- | ----------------------------------------- |
 | Toggle (trouble) diagnostics panel       | <kbd>leader</kbd><kbd>t</kbd><kbd>t</kbd> |
-| Show error or warning at hovered line    | <kbd>T</kbd>                              |
+| Show error or warning at hovered line    | <kbd>Ctrl</kbd><kbd>t</kbd>               |
 | Toggle preview of hovered trouble item   | <kbd>P</kbd>                              |
 | Open hovered trouble item in a new split | <kbd>Ctrl</kbd><kbd>x</kbd>               |
-| Open hovered trouble item in a new tab   | <kbd>Ctrl</kbd><kbd>t</kbd>               |
 
 </p>
 </details>

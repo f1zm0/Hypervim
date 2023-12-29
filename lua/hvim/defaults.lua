@@ -52,9 +52,9 @@ M.core = {
       ['<c-Up>'] = '<cmd>resize -2<cr>',
       ['<c-Right>'] = '<cmd>vertical resize +2<cr>',
 
-      -- faster splits
-      ['\\'] = '<cmd>split<cr>',
-      ['|'] = '<cmd>vsplit<cr>',
+      -- faster splits (and go to next buffer)
+      ['\\'] = '<cmd>bnext | split | bprev<cr>',
+      ['|'] = '<cmd>bnext | vsplit | bprev<cr>',
 
       -- scroll up/down without loosing track of cursor
       ['<c-u>'] = '<c-u>zz',
@@ -65,13 +65,16 @@ M.core = {
       ['<A-k>'] = ":m '<-2<CR>gv-gv",
 
       -- show diagnostics info for hovered item in a float pane
-      ['T'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
+      ['<c-t>'] = "<cmd>lua vim.diagnostic.open_float({scope='line'})<cr>",
     },
     insert_mode = {},
     visual_mode = {
       -- quicker indentation
       ['<'] = '<gv',
       ['>'] = '>gv',
+
+      -- copy from system clipboard
+      ['<leader>y'] = '"+y',
     },
     visual_block_mode = {
       -- Move current line up/down
@@ -81,6 +84,9 @@ M.core = {
       -- scroll up/down without loosing track of cursor
       ['<c-u>'] = '<c-u>zz',
       ['<c-d>'] = '<c-d>zz',
+
+      -- copy from system clipboard
+      ['<leader>y'] = '"+y',
     },
     command_mode = {},
     terminal_mode = {},
