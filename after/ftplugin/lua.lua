@@ -1,9 +1,10 @@
+-- ref: https://github.com/luarocks/lua-style-guide/blob/master/README.md
 vim.opt_local.autoindent = true
 vim.opt_local.conceallevel = 0
 vim.opt_local.expandtab = true
-vim.opt_local.shiftwidth = 2
-vim.opt_local.tabstop = 2
-vim.opt_local.shiftwidth = 2
-vim.opt_local.softtabstop = 2
+vim.opt_local.shiftwidth = 3
+vim.opt_local.tabstop = 3
+vim.opt_local.shiftwidth = 3
+vim.opt_local.softtabstop = 3
 vim.opt_local.textwidth = 120
 vim.opt_local.formatoptions = 'tcq2l'

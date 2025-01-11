@@ -1,6 +1,5 @@
-plugin/packer_compiled.lua
-lua/eperimental.lua
-test-files/
+# unused plugins confs
+unused/
 
 # Compiled Lua sources
 luac.out
@@ -42,4 +41,3 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
-

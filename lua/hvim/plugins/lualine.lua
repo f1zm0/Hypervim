@@ -1,80 +1,58 @@
-local colors = require('tokyonight.colors').night
-local icons = require('hvim.ui.icons')
-local pu = require('hvim.util.path')
-
-local custom_sections = {
-  mode = {
-    'mode',
-    icon = '',
-  },
-  diff = {
-    'diff',
-    source = pu.diff_source(),
-    symbols = {
-      added = icons.diff.add .. ' ',
-      modified = icons.diff.modified .. ' ',
-      removed = icons.diff.remove .. ' ',
-    },
-  },
-  fname = {
-    'filename',
-    path = 1,
-    symbols = {
-      modified = icons.diff.modified,
-    },
-    icon = icons.file,
-  },
-  aerial = {
-    function()
-      local aerial = require('aerial')
-      if aerial.is_active() then
-        return aerial.get_current_function()
-      end
-    end,
-  },
-}
-
 return {
-  options = {
-    theme = 'tokyonight',
-    component_separators = '',
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = {
-      'alpha',
-      'NvimTree',
-      'packer',
-      'Trouble',
-    },
-    globalstatus = true,
-  },
-  sections = {
-    lualine_a = { custom_sections.mode },
-    lualine_b = { custom_sections.fname },
-    lualine_c = { custom_sections.diff },
-    lualine_x = { 'diagnostics', 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'location' },
-    lualine_z = { 'progress' },
-  },
-  inactive_sections = {},
-  tabline = {},
-  winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      custom_sections.fname,
-      'aerial',
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = { custom_sections.fname },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-  extensions = { 'nvim-tree', 'aerial' },
+   'nvim-lualine/lualine.nvim',
+   dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'folke/tokyonight.nvim', -- colors for bar appearance
+   },
+   config = function()
+      local lualine = require('lualine')
+      local colors = require('tokyonight.colors').setup()
+      local opts = {
+         options = {
+            theme = 'auto',
+            component_separators = '',
+            section_separators = { left = '', right = '' },
+            disabled_filetypes = {
+               'alpha',
+               'Trouble',
+            },
+            globalstatus = true,
+         },
+         sections = {
+            lualine_a = {},
+            lualine_b = {
+               {
+                  'buffers',
+                  mode = 0, -- show only buffer name (ref: https://github.com/nvim-lualine/lualine.nvim?tab=readme-ov-file#buffers-component-options)
+                  -- ref: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/components/buffers/init.lua#L8
+                  show_filename_only = true, -- Shows shortened relative path when set to false.
+                  hide_filename_extension = false, -- Hide filename extension when set to true.
+                  show_modified_status = true, -- Shows indicator when the buffer is modified.
+                  max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
+                  use_mode_colors = false, -- nope, we'll handle this with modes.nvim
+                  symbols = {
+                     modified = ' ',
+                     alternate_file = '',
+                     directory = '',
+                  },
+               },
+            },
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {
+               { 'diagnostics' },
+               { 'branch', color = { bg = colors.bg_dark, fg = colors.blue } },
+               { 'diff' },
+            },
+            lualine_z = {
+               { 'progress', color = { bg = colors.bg_dark, fg = colors.fg_gutter } },
+               { 'location', color = { bg = colors.bg_dark, fg = colors.fg } },
+            },
+         },
+         inactive_sections = {},
+         tabline = {},
+         extensions = {},
+      }
+      lualine.setup(opts)
+   end,
 }

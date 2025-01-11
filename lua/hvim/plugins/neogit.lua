@@ -1,5 +1,0 @@
-return {
-  integrations = {
-    diffview = true,
-  },
-}

@@ -126,13 +126,13 @@ function check_nodejs_version() {
   local node_major_version
   node_major_version=$(node --version | cut -d. -f1 | sed 's/v//')
   echo "Detected node version: $node_major_version"
-  if [ "$node_major_version" -ge 18 ]; then
-    echo "[WARNING]: Copilot requires NodeJS version < 18. Downgrade version if you intend to use Copilot"
+  if [ "$node_major_version" -le 20 ]; then
+      echo "[WARNING] Consider upgrading NodeJS to version >=20.X.X"
   fi
 }
 
 function check_system_deps() {
-    local deps_list=("curl" "git" "node" "npm" "yarn" "make" "cc" "fzf" "unzip")
+    local deps_list=("curl" "git" "node" "npm" "make" "cc" "fzf" "unzip")
 
     for dep in "${deps_list[@]}"; do
         if ! command -v "$dep" &>/dev/null; then

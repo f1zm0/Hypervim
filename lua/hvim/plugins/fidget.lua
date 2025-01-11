@@ -1,7 +1,5 @@
 return {
-  notification = {
-    window = {
-      winblend = 0, -- Background color opacity in the notification window
-    },
-  },
+   'j-hui/fidget.nvim',
+   tag = 'v1.5.0',
+   opts = {},
 }
