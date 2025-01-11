@@ -146,44 +146,10 @@ M.cmp = {}
 M.startup_tasks = {
    -- check if there is a new Hypervim release
    check_hvim_updates = false,
-   -- run :PackerSync to update plugins (not recommended)
-   sync_plugins = false,
 }
 
 M.sessions = {
    save_on_exit = false,
-}
-
-M.copilot = {
-   enabled = true,
-   mode = 'default', -- or 'cmp', to use copilot as cmp source
-   auto_trigger = true,
-   inline_suggestions_keymaps = {
-      accept = false, -- use <Tab> (defined in cmp keymaps)
-      accept_word = false,
-      accept_line = false,
-      next = '<M-]>',
-      prev = '<M-[>',
-      dismiss = '<C-]>',
-   },
-   panel_suggestions_keymaps = {
-      jump_prev = '[[',
-      jump_next = ']]',
-      accept = '<CR>',
-      refresh = 'gr',
-      open = '<C-CR>',
-   },
-   filetypes = {
-      yaml = true,
-      markdown = true,
-      help = false,
-      gitcommit = false,
-      gitrebase = false,
-      hgcommit = false,
-      svn = false,
-      cvs = false,
-      ['.'] = false,
-   },
 }
 
 -- UI preferences

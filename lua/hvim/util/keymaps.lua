@@ -35,6 +35,7 @@ function M.register_keymaps(mode, mappings)
          if type(key) == 'table' then
             opt = key[2]
             action = key[1]
+            key = key[1] -- Ensure key is a string
          end
          if action then
             -- add keymap
