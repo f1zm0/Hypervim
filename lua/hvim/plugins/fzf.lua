@@ -12,9 +12,8 @@ return {
    dependencies = { 'nvim-tree/nvim-web-devicons' },
    opts = {
       files = {
-         rg_opts = "--files --hidden --column --line-number --no-heading --color=never --smart-case --follow -g '!.git/' --ignore-file="
-            .. vim.fn.expand('HOME')
-            .. '/.gitignore_global',
+         rg_opts = "--files --hidden --column --line-number --no-heading --color=never --smart-case --follow -g '!.git/' --ignore-file=.gitignore",
+         fd_opts = "--color=never --type f --hidden --follow --exclude .git --ignore-file .gitignore",
       },
       oldfiles = {
          cwd_only = true,
