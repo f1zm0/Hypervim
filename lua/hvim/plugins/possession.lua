@@ -1,5 +1,6 @@
 return {
    'gennaro-tedesco/nvim-possession',
+   enabled = false,
    dependencies = {
       'ibhagwan/fzf-lua',
    },
