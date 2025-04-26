@@ -23,13 +23,13 @@ return {
             lualine_b = {
                {
                   'buffers',
-                  mode = 0, -- show only buffer name (ref: https://github.com/nvim-lualine/lualine.nvim?tab=readme-ov-file#buffers-component-options)
+                  mode = 0,                           -- show only buffer name (ref: https://github.com/nvim-lualine/lualine.nvim?tab=readme-ov-file#buffers-component-options)
                   -- ref: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/components/buffers/init.lua#L8
-                  show_filename_only = true, -- Shows shortened relative path when set to false.
-                  hide_filename_extension = false, -- Hide filename extension when set to true.
-                  show_modified_status = true, -- Shows indicator when the buffer is modified.
+                  show_filename_only = true,          -- Shows shortened relative path when set to false.
+                  hide_filename_extension = false,    -- Hide filename extension when set to true.
+                  show_modified_status = true,        -- Shows indicator when the buffer is modified.
                   max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
-                  use_mode_colors = false, -- nope, we'll handle this with modes.nvim
+                  use_mode_colors = false,            -- nope, we'll handle this with modes.nvim
                   symbols = {
                      modified = ' ',
                      alternate_file = '',
@@ -41,7 +41,7 @@ return {
             lualine_x = {},
             lualine_y = {
                { 'diagnostics' },
-               { 'branch', color = { bg = colors.bg_dark, fg = colors.blue } },
+               { 'branch',     color = { bg = colors.bg_dark, fg = colors.blue } },
                { 'diff' },
             },
             lualine_z = {

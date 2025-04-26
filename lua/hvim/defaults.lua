@@ -16,7 +16,7 @@ M.core = {
       number = true,
       relativenumber = true,
       showmatch = true,
-      hidden = true, -- buffers
+      hidden = true,     -- buffers
       cursorline = true, -- file navigation
       expandtab = true,
       smartindent = true,
@@ -35,7 +35,7 @@ M.core = {
    keymaps = {
       normal_mode = {
          -- quicker exit
-         ['Q'] = '<cmd>qall<cr>', -- quick quit (no save)
+         ['Q'] = '<cmd>qall<cr>',   -- quick quit (no save)
          ['<C-s>'] = '<esc>:w<cr>', -- escape and save
 
          -- buffer navigation and management
@@ -111,7 +111,7 @@ M.lang_servers = {
    lua_ls = {},
    pyright = {},
    rust_analyzer = {},
-   -- tsserver = {},
+   ts_ls = {},
    yamlls = {},
 }
 
@@ -162,9 +162,9 @@ M.ui = {
 
 -- diagnostics options
 M.diagnostics = {
-   underline = false, -- code underline
+   underline = false,   -- code underline
    virtual_text = true, -- inline diagnostics
-   signs = false, -- diagnostics symbols in gutter line
+   signs = false,       -- diagnostics symbols in gutter line
 }
 
 return M

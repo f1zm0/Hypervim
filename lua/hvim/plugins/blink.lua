@@ -53,7 +53,7 @@ return {
                -- more customization options:
                -- https://cmp.saghen.dev/configuration/completion#completion-menu-draw
                columns = {
-                  { 'label', 'label_description', gap = 2 },
+                  { 'label',     'label_description', gap = 2 },
                   { 'kind_icon', gap = 1 },
                   { 'kind' },
                },
