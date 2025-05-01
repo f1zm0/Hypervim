@@ -102,23 +102,12 @@ M.core = {
 M.lang_servers = {
    bashls = {},
    clangd = {},
-   -- cssls = {},
-   -- eslint = {},
-   -- golangci_lint_ls = {},
    gopls = {},
-   revive = {},
-   -- jsonls = {},
    lua_ls = {},
    pyright = {},
    rust_analyzer = {},
    ts_ls = {},
    yamlls = {},
-}
-
--- additional tools required for lang support
-M.lang_tools = {
-   'gofumpt',
-   'goimports',
 }
 
 M.lang_parsers = {
@@ -141,15 +130,15 @@ M.lang_parsers = {
    'yaml',
 }
 
-M.cmp = {}
+-- additional tools required for lang support
+M.lang_tools = {
+   'gofumpt',
+   'goimports',
+}
 
 M.startup_tasks = {
    -- check if there is a new Hypervim release
    check_hvim_updates = false,
-}
-
-M.sessions = {
-   save_on_exit = false,
 }
 
 -- UI preferences
