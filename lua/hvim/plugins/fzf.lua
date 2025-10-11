@@ -3,7 +3,8 @@ return {
    keys = {
       { '<leader>ff', '<cmd>FzfLua files no_header_i=true<cr>', desc = 'Find files' },
       { '<leader>fg', '<cmd>FzfLua live_grep<cr>',              desc = 'Find (grep) in files' },
-      { '<leader>fb', '<cmd>FzfLua buffers<cr>',                desc = 'Find buffers' },
+      -- { '<leader>fb', '<cmd>FzfLua buffers<cr>',                desc = 'Find buffers' },
+      { '<leader>b',  '<cmd>FzfLua buffers<cr>',                desc = 'Find buffers' },
       { '<leader>fh', '<cmd>FzfLua help_tags<cr>',              desc = 'Find tags' },
       { '<leader>fr', '<cmd>FzfLua oldfiles<cr>',               desc = 'Find recent files' },
       { '<leader>x',  '<cmd>FzfLua diagnostics_document<cr>',   desc = 'Show document diagnostics' },
