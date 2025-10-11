@@ -31,7 +31,7 @@ return {
                   max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
                   use_mode_colors = false,            -- nope, we'll handle this with modes.nvim
                   symbols = {
-                     modified = ' ',
+                     modified = ' ',
                      alternate_file = '',
                      directory = '',
                   },
