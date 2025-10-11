@@ -99,15 +99,15 @@ M.core = {
    },
 }
 
-M.lang_servers = {
-   bashls = {},
-   clangd = {},
-   gopls = {},
-   lua_ls = {},
-   pyright = {},
-   rust_analyzer = {},
-   ts_ls = {},
-   yamlls = {},
+M.lsp_servers = {
+   'bashls',
+   'clangd',
+   'gopls',
+   'lua_ls',
+   'pyright',
+   'rust_analyzer',
+   'ts_ls',
+   'yamlls',
 }
 
 M.lang_parsers = {
