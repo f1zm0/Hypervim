@@ -1,33 +1,31 @@
 return {
-   'neovim/nvim-lspconfig',
-   event = { 'BufReadPre', 'BufReadPost' }, -- LazyFile
-   dependencies = { 'saghen/blink.cmp' },
-   opts = {
-      servers = require('hvim.defaults').lang_servers,
+   "neovim/nvim-lspconfig",
+   event = { 'BufReadPre', 'BufReadPost' },
+   dependencies = {
+      'saghen/blink.cmp',
    },
-   config = function(_, opts)
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
+   config = function()
+      local lsp_servers = require("hvim.defaults").lsp_servers
+      local capabilities = require("hvim.lsp.capabilities").make_capabilities()
 
-      -- custom servers settings
-      if opts.servers.lua_ls then
-         opts.servers.lua_ls = vim.tbl_extend('force', opts.servers.lua_ls, require('hvim.servers.luals'))
-      end
-      if opts.servers.gopls then
-         opts.servers.gopls = vim.tbl_extend('force', opts.servers.gopls, require('hvim.servers.gopls'))
-      end
+      -- config servers
+      vim.lsp.config['lua_ls'] = require('hvim.lsp.servers.luals')
+      vim.lsp.config['gopls'] = require('hvim.lsp.servers.gopls')
 
-      -- extend server configs
-      local extended_servers = {}
-      for server, server_cfg in pairs(opts.servers) do
-         extended_servers[server] = vim.tbl_extend('force', server_cfg, { capabilities = capabilities })
-      end
+      -- set capabilities for all servers
+      vim.lsp.config('*', {
+         capabilities = capabilities,
+         flags = {
+            debounce_text_changes = 500,
+         },
+      })
 
-      -- setup all servers
-      for server, server_cfg in pairs(extended_servers) do
-         lspconfig[server].setup(server_cfg)
+      -- enable servers
+      for _, server in ipairs(lsp_servers) do
+         vim.lsp.enable(server)
       end
 
+      -- setup autocmds
       vim.api.nvim_create_autocmd('LspAttach', {
          group = vim.api.nvim_create_augroup('UserLspConfig', {}),
          callback = function(args)
@@ -49,6 +47,9 @@ return {
             vim.keymap.set('n', 'gd', function()
                require('fzf-lua').lsp_definitions()
             end, bufopts)
+            vim.keymap.set('n', 'gt', function()
+               require('fzf-lua').lsp_typedefs()
+            end, bufopts)
             vim.keymap.set('n', 'gr', function()
                require('fzf-lua').lsp_references()
             end, bufopts)
@@ -66,5 +67,5 @@ return {
             end, bufopts)
          end,
       }) -- autocmd end --
-   end,
+   end
 }
