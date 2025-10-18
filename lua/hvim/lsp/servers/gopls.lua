@@ -28,7 +28,7 @@ return {
             unusedwrite = true,
             useany = true,
          },
-         staticcheck = true,
+         staticcheck = false, -- run with golangci-lint
          directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
          semanticTokens = true,
          ['ui.inlayhint.hints'] = {
