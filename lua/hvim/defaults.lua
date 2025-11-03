@@ -1,5 +1,6 @@
 local M = {}
 
+-- core Neovim settings
 M.core = {
    globals = {
       mapleader = ' ',
@@ -99,6 +100,8 @@ M.core = {
    },
 }
 
+-- LSP servers to be installed
+-- auto-installed with mason.nvim
 M.lsp_servers = {
    'bashls',
    'clangd',
@@ -110,6 +113,8 @@ M.lsp_servers = {
    'yamlls',
 }
 
+-- language parsers
+-- auto-installed for treesitter.nvim
 M.lang_parsers = {
    'bash',
    'css',
@@ -131,6 +136,7 @@ M.lang_parsers = {
 }
 
 -- additional tools required for lang support
+-- auto-installed with mason.nvim
 M.lang_tools = {
    'gofumpt',
    'goimports',
@@ -151,9 +157,8 @@ M.ui = {
 
 -- diagnostics options
 M.diagnostics = {
-   underline = false,   -- code underline
-   virtual_text = true, -- inline diagnostics
-   signs = false,       -- diagnostics symbols in gutter line
+   underline = false, -- code underline
+   signs = false,     -- diagnostics symbols in gutter line
 }
 
 return M
