@@ -14,7 +14,7 @@ end
 
 return {
    'saghen/blink.cmp',
-   version = '0.*',
+   version = '1.*',
    dependencies = {
       -- additional sources
    },
@@ -33,18 +33,19 @@ return {
          use_nvim_cmp_as_default = true,
          nerd_font_variant = 'mono',
       },
+      fuzzy = { implementation = 'lua' },
       sources = {
          default = { 'lsp', 'path', 'buffer' }, -- snippets
       },
       signature = { enabled = true },
       completion = {
          ghost_text = {
-            enabled = true,
+            enabled = false, -- 'true' conflicts with copilot
          },
          list = {
             -- insert item while navigating
             selection = { preselect = true, auto_insert = true },
-            max_items = 8,
+            -- max_items = 8,
          },
          menu = {
             auto_show = show_nocmdline_nosearch,

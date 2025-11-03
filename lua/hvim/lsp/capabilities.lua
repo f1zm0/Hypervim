@@ -6,7 +6,7 @@ local function make_capabilities()
       lineFoldingOnly = true,
    }
 
-   capabilities.textDocument.formatting = {
+   capabilities.textDocument.format = {
       dynamicRegistration = false,
    }
 
