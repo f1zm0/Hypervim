@@ -29,7 +29,14 @@ return {
             useany = true,
          },
          staticcheck = false, -- run with golangci-lint
-         directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
+         directoryFilters = {
+            '-.git',
+            '-.vscode',
+            '-.idea',
+            '-.vscode-test',
+            '-node_modules',
+            '-vendor'
+         },
          semanticTokens = true,
          ['ui.inlayhint.hints'] = {
             compositeLiteralFields = true,
