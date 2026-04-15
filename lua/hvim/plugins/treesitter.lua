@@ -1,15 +1,41 @@
 return {
    'nvim-treesitter/nvim-treesitter',
-   version = false,
-   lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file
-   event = { 'BufReadPre', 'BufNewFile' },
-   init = function(plugin)
-      require('lazy.core.loader').add_to_rtp(plugin)
-      require('nvim-treesitter.query_predicates')
-   end,
-   opts = {
-      ensure_intalled = require('hvim.defaults').lang_parsers,
-      highlight = { enable = true },
-      indent = { enable = true },
+   lazy = false,
+   dependencies = {
+      {
+         'nvim-treesitter/nvim-treesitter-context',
+         opts = {
+            max_lines = 3,
+            multiline_threshold = 1,
+            min_window_height = 20, -- disable when the window is too small
+         },
+         keys = {
+            {
+               '[c',
+               function()
+                  -- jump to previous change when in diffview
+                  if vim.wo.diff then
+                     return '[c'
+                  else
+                     vim.schedule(function()
+                        require('treesitter-context').go_to_context()
+                     end)
+                     return '<Ignore>'
+                  end
+               end,
+               desc = 'Jump to upper context',
+               expr = true,
+            },
+         },
+      },
    },
+   build = ':TSUpdate',
+   config = function(_, opts)
+      local parsers = require('hvim.defaults').lang_parsers
+
+      -- setup treesitter and ensure all default language parsers are installed
+      require('nvim-treesitter').setup(
+         vim.tbl_extend('force', opts, { ensure_installed = parsers })
+      )
+   end,
 }
