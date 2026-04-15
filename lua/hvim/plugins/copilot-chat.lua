@@ -42,20 +42,6 @@ return {
          end,
          desc = "CopilotChat - Ask input",
       },
-      -- {
-      --    "<leader>ax",
-      --    ":CopilotChatInline",
-      --    mode = "x",
-      --    desc = "CopilotChat - Inline chat",
-      -- },
-      -- {
-      --    '<leader>ap',
-      --    function()
-      --       local actions = require('CopilotChat.actions') -- .actions doesn't exist!!
-      --       require('CopilotChat.integrations.fzflua').pick(actions.prompt_actions())
-      --    end,
-      --    desc = 'CopilotChat - Actions prompt',
-      -- },
       {
          "<leader>aq",
          function()
@@ -71,17 +57,27 @@ return {
 
    },
    opts = function()
+      -- get current user name
       local user = vim.env.USER or "User"
       user = user:sub(1, 1):upper() .. user:sub(2)
+
       return {
          auto_insert_mode = false,
-         question_header = "  " .. user .. " ",
-         answer_header = "  Copilot ",
+         highlight_headers = false,
+         separator = '---',
          error_header = '> [!ERROR] Error',
 
          -- window pane
          window = {
+            layout = 'vertical',
+            title = ' Copilot Chat ',
             width = 0.4,
+            zindex = 100, -- ensure window stays on top
+         },
+         headers = {
+            user = "  " .. user .. " ",
+            assistant = "  Copilot ",
+            tool = "  Tool",
          },
 
          -- custom prompts
