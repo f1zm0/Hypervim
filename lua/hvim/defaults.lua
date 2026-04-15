@@ -127,6 +127,7 @@ M.lang_parsers = {
    'javascript',
    'json',
    'lua',
+   'markdown',
    'python',
    'regex',
    'rust',
