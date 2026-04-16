@@ -1,6 +1,7 @@
 return {
    'nvim-treesitter/nvim-treesitter',
    lazy = false,
+   branch = 'main',
    dependencies = {
       {
          'nvim-treesitter/nvim-treesitter-context',
@@ -29,6 +30,10 @@ return {
          },
       },
    },
+   config = function()
+      local ensure_parsers = require('hvim.defaults').lang_parsers
+      require('nvim-treesitter').install(ensure_parsers)
+   end,
    init = function()
       vim.api.nvim_create_autocmd('FileType', {
          callback = function()
