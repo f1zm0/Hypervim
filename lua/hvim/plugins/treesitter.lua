@@ -29,13 +29,14 @@ return {
          },
       },
    },
-   build = ':TSUpdate',
-   config = function(_, opts)
-      local parsers = require('hvim.defaults').lang_parsers
-
-      -- setup treesitter and ensure all default language parsers are installed
-      require('nvim-treesitter').setup(
-         vim.tbl_extend('force', opts, { ensure_installed = parsers })
-      )
+   init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+         callback = function()
+            -- Enable treesitter highlighting and disable regex syntax
+            pcall(vim.treesitter.start)
+            -- Enable treesitter-based indentation
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+         end,
+      })
    end,
 }
