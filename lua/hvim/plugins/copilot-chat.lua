@@ -1,18 +1,3 @@
-local M = {}
-
----@param kind string
-function M.pick(kind)
-   return function()
-      local actions = require('CopilotChat.actions')
-      local items = actions[kind .. '_actions']()
-      if not items then
-         vim.notify('No ' .. kind .. ' found on the current line')
-         return
-      end
-      require('CopilotChat.integrations.fzflua').pick(items)
-   end
-end
-
 return {
    'CopilotC-Nvim/CopilotChat.nvim',
    -- config ref from docs:
@@ -33,32 +18,31 @@ return {
          end,
       },
       {
-         "<leader>a?",
+         '<leader>a?',
          function()
-            local input = vim.fn.input("Ask Copilot: ")
-            if input ~= "" then
-               vim.cmd("CopilotChat " .. input)
+            local input = vim.fn.input('Ask Copilot: ')
+            if input ~= '' then
+               vim.cmd('CopilotChat ' .. input)
             end
          end,
-         desc = "CopilotChat - Ask input",
+         desc = 'CopilotChat - Ask input',
       },
       {
-         "<leader>aq",
+         '<leader>aq',
          function()
-            local input = vim.fn.input("Quick Chat: ")
-            if input ~= "" then
-               require("CopilotChat").ask(input, {
-                  selection = require("CopilotChat.select").buffer
+            local input = vim.fn.input('Quick Chat: ')
+            if input ~= '' then
+               require('CopilotChat').ask(input, {
+                  selection = require('CopilotChat.select').buffer,
                })
             end
          end,
-         desc = "CopilotChat - Quick chat",
+         desc = 'CopilotChat - Quick chat',
       },
-
    },
    opts = function()
       -- get current user name
-      local user = vim.env.USER or "User"
+      local user = vim.env.USER or 'User'
       user = user:sub(1, 1):upper() .. user:sub(2)
 
       return {
@@ -75,9 +59,9 @@ return {
             zindex = 100, -- ensure window stays on top
          },
          headers = {
-            user = "  " .. user .. " ",
-            assistant = "  Copilot ",
-            tool = "  Tool",
+            user = '  ' .. user .. ' ',
+            assistant = '  Copilot',
+            tool = '  Tool',
          },
 
          -- custom prompts

@@ -22,6 +22,7 @@ vim.diagnostic.config(diagnostics)
 
 require('hvim.lazy')
 require('hvim.ui')
+require('hvim.lsp')
 
 -- -- run startup tasks if enabled
 -- if require('hvim.defaults').startup_tasks.check_hvim_updates then
