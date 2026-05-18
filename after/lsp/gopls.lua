@@ -1,4 +1,7 @@
 return {
+   cmd = { 'gopls' },
+   root_markers = { 'go.mod' },
+   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
    settings = {
       gopls = {
          gofumpt = true,
@@ -35,7 +38,7 @@ return {
             '-.idea',
             '-.vscode-test',
             '-node_modules',
-            '-vendor'
+            '-vendor',
          },
          semanticTokens = true,
          ['ui.inlayhint.hints'] = {
