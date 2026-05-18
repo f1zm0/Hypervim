@@ -17,7 +17,7 @@ M.core = {
       number = true,
       relativenumber = true,
       showmatch = true,
-      hidden = true,     -- buffers
+      hidden = true, -- buffers
       cursorline = true, -- file navigation
       expandtab = true,
       smartindent = true,
@@ -36,7 +36,7 @@ M.core = {
    keymaps = {
       normal_mode = {
          -- quicker exit
-         ['Q'] = '<cmd>qall<cr>',   -- quick quit (no save)
+         ['Q'] = '<cmd>qall<cr>', -- quick quit (no save)
          ['<C-s>'] = '<esc>:w<cr>', -- escape and save
 
          -- buffer navigation and management
@@ -100,19 +100,6 @@ M.core = {
    },
 }
 
--- LSP servers to be installed
--- auto-installed with mason.nvim
-M.lsp_servers = {
-   'bashls',
-   'clangd',
-   'gopls',
-   'lua_ls',
-   'pyright',
-   'rust_analyzer',
-   'ts_ls',
-   'yamlls',
-}
-
 -- language parsers
 -- auto-installed for treesitter.nvim
 M.lang_parsers = {
@@ -136,11 +123,32 @@ M.lang_parsers = {
    'yaml',
 }
 
+-- install mason, mason-tool-installer and mason-lsp-config to automatically
+-- install and configure lsp servers and additional languge tools
+M.mason_auto_install_config = true
+
+-- LSP servers to be installed
+-- auto-installed with mason-lspconfig.nvim
+M.lsp_servers = {
+   'bashls',
+   'clangd',
+   'gopls',
+   'lua_ls',
+   'pyright',
+   'rust_analyzer',
+   'ts_ls',
+   'yamlls',
+}
+
 -- additional tools required for lang support
--- auto-installed with mason.nvim
+-- auto-installed with mason-tool-installer.nvim
 M.lang_tools = {
-   'gofumpt',
-   'goimports',
+   'gofumpt', -- go install
+   'goimports', -- go install
+   'golangci-lint', -- go install
+   'stylua', -- cargo install stylua
+   'prettier', -- npm i -g prettier
+   'eslint_d', -- npm i -g eslint_d
 }
 
 M.startup_tasks = {
@@ -159,7 +167,7 @@ M.ui = {
 -- diagnostics options
 M.diagnostics = {
    underline = false, -- code underline
-   signs = false,     -- diagnostics symbols in gutter line
+   signs = false, -- diagnostics symbols in gutter line
 }
 
 return M
