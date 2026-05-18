@@ -13,7 +13,7 @@ return {
          json = { 'prettier' },
          lua = { 'stylua' },
          markdown = { 'prettier' },
-         python = { 'black' },
+         python = { 'ruff_format', 'ruff_organize_imports' },
          rust = { 'rustfmt', lsp_format = 'fallback' },
          scss = { 'prettier' },
          typescript = { 'prettier' },
