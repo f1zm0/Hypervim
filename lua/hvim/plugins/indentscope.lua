@@ -1,9 +1,7 @@
 return {
-   {
-      'echasnovski/mini.indentscope',
-      version = '0.*',
-      opts = {
-         symbol = '▸',
-      },
+   'nvim-mini/mini.indentscope',
+   version = '*',
+   opts = {
+      symbol = '▸',
    },
 }
